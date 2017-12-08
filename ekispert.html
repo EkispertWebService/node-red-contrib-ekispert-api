@@ -6,7 +6,18 @@ RED.nodes.registerType('ekispert',{
     name: {value:""},
     accessKey: {value: ""},
     stationName: {value: ""},
-    stationCode: {value: ""}
+    stationCode: {value: ""},
+    stationOldName: {value: ""},
+    corporationName: {value: ""},
+    railName: {value: ""},
+    operationLineCode: {value: ""},
+    trafficType: {value: ""},
+    prefectureCode: {value: ""},
+    offset: {value: ""},
+    limit: {value: ""},
+    direction: {value: ""},
+    corporationBind: {value: ""},
+    gcs: {value: ""}
   },
   inputs:1,
   outputs:1,
@@ -33,6 +44,50 @@ RED.nodes.registerType('ekispert',{
   <div class="form-row">
     <label for="node-input-stationCode"><i class="icon-tag"></i> Station Code</label>
     <input type="text" id="node-input-stationCode" placeholder="Station Code">
+  </div>
+  <div class="form-row">
+    <label for="node-input-stationOldName"><i class="icon-tag"></i> Station Old Name</label>
+    <input type="text" id="node-input-stationOldName" placeholder="Station Old Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationName"><i class="icon-tag"></i> Corporation Name</label>
+    <input type="text" id="node-input-corporationName" placeholder="Corporation Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-railName"><i class="icon-tag"></i> Rail Name</label>
+    <input type="text" id="node-input-railName" placeholder="Rail Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-operationLineCode"><i class="icon-tag"></i> Operation Line Code</label>
+    <input type="text" id="node-input-operationLineCode" placeholder="Operation Line Code">
+  </div>
+  <div class="form-row">
+    <label for="node-input-trafficType"><i class="icon-tag"></i> Traffic Type</label>
+    <input type="text" id="node-input-trafficType" placeholder="Traffic Type">
+  </div>
+  <div class="form-row">
+    <label for="node-input-prefectureCode"><i class="icon-tag"></i> Prefecture Code</label>
+    <input type="text" id="node-input-prefectureCode" placeholder="Prefecture Code">
+  </div>
+  <div class="form-row">
+    <label for="node-input-offset"><i class="icon-tag"></i> Offset</label>
+    <input type="text" id="node-input-offset" placeholder="Offset">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limit"><i class="icon-tag"></i> Limit</label>
+    <input type="text" id="node-input-limit" placeholder="Limit">
+  </div>
+  <div class="form-row">
+    <label for="node-input-direction"><i class="icon-tag"></i> Direction</label>
+    <input type="text" id="node-input-direction" placeholder="Direction">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationBind"><i class="icon-tag"></i> Corporation Bind</label>
+    <input type="text" id="node-input-corporationBind" placeholder="Corporation Bind">
+  </div>
+  <div class="form-row">
+    <label for="node-input-gcs"><i class="icon-tag"></i> Gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="Gcs">
   </div>
 </script>
 
