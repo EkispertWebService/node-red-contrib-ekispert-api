@@ -1,12 +1,13 @@
 module.exports = function(RED) {
+
   function LowerCaseNode(config) {
     RED.nodes.createNode(this,config);
 
-    console.log(config.accessKey);
-
+    console.log("key1:" + config.accessKey);
+    this.accessKey = config.accessKey;
     var node = this;
     node.on('input', function(msg) {
-      msg.payload = msg.payload.toLowerCase();
+      console.log("key: " + node.accessKey);
       node.send(msg);
     });
   }
