@@ -8,13 +8,28 @@ module.exports = function(RED) {
 
     this.accessKey = config.accessKey;
     this.stationName = config.stationName;
-    this.stasionCode = config.stasionCode;
+    this.stationCode = config.stationCode;
     var node = this;
 
     node.on('input', function(msg) {
 
-      var url = encodeURI(endpoint + "station?key=" + node.accessKey + "&name=" + node.stationName);
+      var params = {
+        key: node.accessKey,
+        name: node.stationName,
+        code: node.stationCode
+      }
 
+      var flatParams = "";
+      for(key in params){
+        console.log(key + "さんの番号は、" + params[key] + "です。") ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      // var url = encodeURI(endpoint + "station?key=" + node.accessKey + "&name=" + node.stationName);
+      var url = encodeURI(endpoint + "station?" + flatParams);
+      console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
           msg.payload = JSON.parse(body);
