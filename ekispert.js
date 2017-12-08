@@ -2,7 +2,7 @@ module.exports = function(RED) {
     function LowerCaseNode(config) {
         RED.nodes.createNode(this,config);
 
-        console.log(config.aaa);
+        console.log(config.accessKey);
 
         var node = this;
         node.on('input', function(msg) {
