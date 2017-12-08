@@ -1,41 +1,41 @@
 <script type="text/javascript">
-    RED.nodes.registerType('ekispert',{
-        category: 'function',
-        color: '#a6bbcf',
-        defaults: {
-            name: {value:""},
-            accessKey: {value: ""},
-            stationName: {value: ""},
-            stationCode: {value: ""}
-        },
-        inputs:1,
-        outputs:1,
-        icon: "file.png",
-        label: function() {
-            return this.name||"ekispert";
-        }
-    });
+RED.nodes.registerType('ekispert',{
+  category: 'function',
+  color: '#a6bbcf',
+  defaults: {
+    name: {value:""},
+    accessKey: {value: ""},
+    stationName: {value: ""},
+    stationCode: {value: ""}
+  },
+  inputs:1,
+  outputs:1,
+  icon: "file.png",
+  label: function() {
+    return this.name||"ekispert";
+  }
+});
 </script>
 
 <script type="text/x-red" data-template-name="ekispert">
-    <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
-        <input type="text" id="node-input-accessKey" placeholder="Access Key">
-    </div>
-    <div class="form-row">
-        <label for="node-input-stationName"><i class="icon-tag"></i> Station Name</label>
-        <input type="text" id="node-input-stationName" placeholder="Station Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-stationCode"><i class="icon-tag"></i> Station Code</label>
-        <input type="text" id="node-input-stationCode" placeholder="Station Code">
-    </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
+    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+  </div>
+  <div class="form-row">
+    <label for="node-input-stationName"><i class="icon-tag"></i> Station Name</label>
+    <input type="text" id="node-input-stationName" placeholder="Station Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-stationCode"><i class="icon-tag"></i> Station Code</label>
+    <input type="text" id="node-input-stationCode" placeholder="Station Code">
+  </div>
 </script>
 
 <script type="text/x-red" data-help-name="ekispert">
-    <p>A simple node that converts the message payloads into all ekispert characters</p>
+  <p>A simple node that converts the message payloads into all ekispert characters</p>
 </script>
