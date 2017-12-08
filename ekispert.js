@@ -1,5 +1,6 @@
 module.exports = function(RED) {
-    function LowerCaseNode(config) {
+
+    function StationNode(config) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
@@ -7,5 +8,6 @@ module.exports = function(RED) {
             node.send(msg);
         });
     }
-    RED.nodes.registerType("aaaaa",LowerCaseNode);
+
+    RED.nodes.registerType("aaaaa",StationNode);
 }
