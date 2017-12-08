@@ -1,16 +1,16 @@
 {
-  "name": "red-contrib-ekispert-api",
+  "name": "node-red-contrib-ekispert-api",
   "version": "1.0.0",
   "description": "",
-  "main": "lower-case.js",
+  "main": "ekispert.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "node-red": {
+  "license": "ISC",
+  "node-red" : {
     "nodes": {
-      "lower-case": "lower-case.js"
+        "aaaaa": "ekispert.js"
     }
-  },
-  "license": "ISC"
+  }
 }
