@@ -49,7 +49,6 @@ module.exports = function(RED) {
         }
       }
 
-      // var url = encodeURI(endpoint + "station?key=" + node.accessKey + "&name=" + node.stationName);
       var url = encodeURI(endpoint + "station?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
