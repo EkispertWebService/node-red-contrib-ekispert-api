@@ -116,7 +116,7 @@ module.exports = function(RED) {
 
       var flatParams = "";
       for(key in params){
-        console.log(key + "さんの番号は、" + params[key] + "です。") ;
+        console.log(key + ": " + params[key]) ;
         if(params[key]) {
           flatParams += key + "=" + params[key] + "&";
         }
@@ -135,4 +135,73 @@ module.exports = function(RED) {
     });
   }
   RED.nodes.registerType("search range",SearchMultipleRangeNode);
+
+  function SearchNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.from = config.from;
+    this.to = config.to;
+    this.via = config.via;
+    this.date = config.date;
+    this.time = config.time;
+    this.searchType = config.searchType;
+    this.plane = config.plane;
+    this.shinkansen = config.shinkansen;
+    this.limitedExpress = config.limitedExpress;
+    this.redirect = config.redirect;
+    this.contentsMode = config.contentsMode;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var from = node.from || msg.from;
+      var to = node.to || msg.to;
+      var via = node.via || msg.via;
+      var date = node.date || msg.date;
+      var time = node.time || msg.time;
+      var searchType = node.searchType || msg.searchType;
+      var plane = node.plane || msg.plane;
+      var shinkansen = node.shinkansen || msg.shinkansen;
+      var limitedExpress = node.limitedExpress || msg.limitedExpress;
+      var redirect = node.redirect || msg.redirect;
+      var contentsMode = node.contentsMode || msg.contentsMode;
+
+      var params = {
+        key: accessKey,
+        from: from,
+        to: to,
+        via: via,
+        date: date,
+        time: time,
+        searchType: searchType,
+        plane: plane,
+        shinkansen: shinkansen,
+        limitedExpress: limitedExpress,
+        redirect: redirect,
+        contentsMode: contentsMode
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "search/course/light?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("search",SearchNode);
 }

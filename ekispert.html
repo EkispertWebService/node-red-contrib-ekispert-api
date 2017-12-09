@@ -50,6 +50,32 @@ RED.nodes.registerType('search range',{
   }
 });
 
+RED.nodes.registerType('search',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    from: { value: "", required: true },
+    to: { value: "", required: true },
+    via: { value: "" },
+    date: { value: "" },
+    time: { value: "" },
+    searchType: { value: "" },
+    plane: { value: "" },
+    shinkansen: { value: "" },
+    limitedExpress: { value: "" },
+    redirect: { value: "" },
+    contentsMode: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "light.png",
+  label: function() {
+    return this.name||"search";
+  }
+});
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -163,4 +189,65 @@ RED.nodes.registerType('search range',{
 <script type="text/x-red" data-help-name="search range">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/search/multipleRange.html" target="_blank">http://docs.ekispert.com/v1/api/search/multipleRange.html</a>
+</script>
+
+
+<script type="text/x-red" data-template-name="search">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
+    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+  </div>
+  <div class="form-row">
+    <label for="node-input-from"><i class="icon-tag"></i> From</label>
+    <input type="text" id="node-input-from" placeholder="From">
+  </div>
+  <div class="form-row">
+    <label for="node-input-to"><i class="icon-tag"></i> To</label>
+    <input type="text" id="node-input-to" placeholder="To">
+  </div>
+  <div class="form-row">
+    <label for="node-input-via"><i class="icon-tag"></i> Via</label>
+    <input type="text" id="node-input-via" placeholder="Via">
+  </div>
+  <div class="form-row">
+    <label for="node-input-date"><i class="icon-tag"></i> Date</label>
+    <input type="text" id="node-input-date" placeholder="Date">
+  </div>
+  <div class="form-row">
+    <label for="node-input-time"><i class="icon-tag"></i> Time</label>
+    <input type="text" id="node-input-time" placeholder="Time">
+  </div>
+  <div class="form-row">
+    <label for="node-input-searchType"><i class="icon-tag"></i> SearchType</label>
+    <input type="text" id="node-input-searchType" placeholder="SearchType">
+  </div>
+  <div class="form-row">
+    <label for="node-input-plane"><i class="icon-tag"></i> Plane</label>
+    <input type="text" id="node-input-plane" placeholder="Plane">
+  </div>
+  <div class="form-row">
+    <label for="node-input-shinkansen"><i class="icon-tag"></i> Shinkansen</label>
+    <input type="text" id="node-input-shinkansen" placeholder="Shinkansen">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limitedExpress"><i class="icon-tag"></i> Limited Express</label>
+    <input type="text" id="node-input-limitedExpress" placeholder="Limited Express">
+  </div>
+  <div class="form-row">
+    <label for="node-input-redirect"><i class="icon-tag"></i> Redirect</label>
+    <input type="text" id="node-input-redirect" placeholder="Redirect">
+  </div>
+  <div class="form-row">
+    <label for="node-input-contentsMode"><i class="icon-tag"></i> ContentsMode</label>
+    <input type="text" id="node-input-contentsMode" placeholder="ContentsMode">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="search">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/le/api/search/course/light.html" target="_blank">http://docs.ekispert.com/v1/le/api/search/course/light.html</a>
 </script>
