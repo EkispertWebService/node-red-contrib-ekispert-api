@@ -26,27 +26,40 @@ module.exports = function(RED) {
 
       var accessKey = node.accessKey || msg.accessKey;
       var stationName = node.stationName || msg.stationName;
+      var stationCode = node.stationCode || msg.stationCode;
+      var stationOldName = node.stationOldName || msg.stationOldName;
+      var corporationName = node.corporationName || msg.corporationName;
+      var railName = node.railName || msg.railName;
+      var operationLineCode = node.operationLineCode || msg.operationLineCode;
+      var trafficType = node.trafficType || msg.trafficType;
+      var prefectureCode = node.prefectureCode || msg.prefectureCode;
+      var offset = node.offset || msg.offset;
+      var limit = node.limit || msg.limit;
+      var direction = node.direction || msg.direction;
+      var corporationBind = node.corporationBind || msg.corporationBind;
+      var gcs = node.gcs || msg.gcs;
+
 
       var params = {
         key: accessKey,
         name: stationName,
-        code: node.stationCode,
-        oldName: node.stationOldName,
-        corporationName: node.corporationName,
-        railName: node.railName,
-        operationLineCode: node.operationLineCode,
-        type: node.trafficType,
-        prefectureCode: node.prefectureCode,
-        offset: node.offset,
-        limit: node.limit,
-        direction: node.direction,
-        corporationBind: node.corporationBind,
-        gcs: node.gcs
+        code: stationCode,
+        oldName: stationOldName,
+        corporationName: corporationName,
+        railName: railName,
+        operationLineCode: operationLineCode,
+        type: trafficType,
+        prefectureCode: prefectureCode,
+        offset: offset,
+        limit: limit,
+        direction: direction,
+        corporationBind: corporationBind,
+        gcs: gcs
       }
 
       var flatParams = "";
       for(key in params){
-        console.log(key + "さんの番号は、" + params[key] + "です。") ;
+        console.log(key + ": " + params[key]) ;
         if(params[key]) {
           flatParams += key + "=" + params[key] + "&";
         }
