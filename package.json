@@ -8,7 +8,9 @@
   },
   "author": "hmaruyama",
   "license": "Apache-2.0",
-  "keywords": [ "node-red" ],
+  "keywords": [
+    "node-red"
+  ],
   "node-red": {
     "nodes": {
       "ekispert": "ekispert.js"
@@ -16,5 +18,14 @@
   },
   "dependencies": {
     "request": "^2.83.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmaruyama/node-red-contrib-ekispert-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hmaruyama/node-red-contrib-ekispert-api/issues"
+  },
+  "homepage": "https://github.com/hmaruyama/node-red-contrib-ekispert-api#readme"
 }
