@@ -28,7 +28,7 @@ RED.nodes.registerType('station',{
   }
 });
 
-RED.nodes.registerType('search',{
+RED.nodes.registerType('search range',{
   category: 'function',
   color: '#e49190',
   defaults: {
@@ -46,7 +46,7 @@ RED.nodes.registerType('search',{
   outputs:1,
   icon: "light.png",
   label: function() {
-    return this.name||"search";
+    return this.name||"search range";
   }
 });
 
@@ -121,7 +121,7 @@ RED.nodes.registerType('search',{
 </script>
 
 
-<script type="text/x-red" data-template-name="search">
+<script type="text/x-red" data-template-name="search range">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name" placeholder="Name">
@@ -160,7 +160,7 @@ RED.nodes.registerType('search',{
   </div>
 </script>
 
-<script type="text/x-red" data-help-name="search">
+<script type="text/x-red" data-help-name="search range">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/search/multipleRange.html" target="_blank">http://docs.ekispert.com/v1/api/search/multipleRange.html</a>
 </script>
