@@ -3,7 +3,7 @@ module.exports = function(RED) {
   var request = require('request');
   var endpoint = "https://api.ekispert.jp/v1/json/";
 
-  function LowerCaseNode(config) {
+  function StationNode(config) {
     RED.nodes.createNode(this,config);
 
     this.accessKey = config.accessKey;
@@ -61,5 +61,5 @@ module.exports = function(RED) {
       });
     });
   }
-  RED.nodes.registerType("ekispert",LowerCaseNode);
+  RED.nodes.registerType("station",StationNode);
 }
