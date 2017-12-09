@@ -94,15 +94,24 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var accessKey = node.accessKey || msg.accessKey;
+      var baseList = node.baseList || msg.baseList;
+      var upperMinute = node.upperMinute || msg.upperMinute;
+      var upperTransferCount = node.upperTransferCount || msg.upperTransferCount;
+      var plane = node.plane || msg.plane;
+      var shinkansen = node.shinkansen || msg.shinkansen;
+      var limitedExpress = node.limitedExpress || msg.limitedExpress;
+      var limit = node.limit || msg.limit;
+
       var params = {
-        key: node.accessKey,
-        baseList: node.baseList,
-        upperMinute: node.upperMinute,
-        upperTransferCount: node.upperTransferCount,
-        plane: node.plane,
-        shinkansen: node.shinkansen,
-        limitedExpress: node.limitedExpress,
-        limit: node.limit
+        key: accessKey,
+        baseList: baseList,
+        upperMinute: upperMinute,
+        upperTransferCount: upperTransferCount,
+        plane: plane,
+        shinkansen: shinkansen,
+        limitedExpress: limitedExpress,
+        limit: limit
       }
 
       var flatParams = "";
