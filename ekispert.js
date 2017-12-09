@@ -204,4 +204,47 @@ module.exports = function(RED) {
     });
   }
   RED.nodes.registerType("search",SearchNode);
+
+  function StationInfoNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.stationCode = config.stationCode;
+    this.infoType = config.infoType;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var stationCode = node.stationCode || msg.stationCode;
+      var infoType = node.infoType || msg.infoType;
+
+      var params = {
+        key: accessKey,
+        code: stationCode,
+        type: infoType
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "search/station/info?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("station info",StationInfoNode);
+
 }

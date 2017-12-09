@@ -76,6 +76,23 @@ RED.nodes.registerType('search',{
   }
 });
 
+RED.nodes.registerType('station info',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    stationCode: { value: "", required: true },
+    infoType: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "light.png",
+  label: function() {
+    return this.name||"station info";
+  }
+});
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -250,4 +267,30 @@ RED.nodes.registerType('search',{
 <script type="text/x-red" data-help-name="search">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/le/api/search/course/light.html" target="_blank">http://docs.ekispert.com/v1/le/api/search/course/light.html</a>
+</script>
+
+
+<script type="text/x-red" data-template-name="station info">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
+    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+  </div>
+  <div class="form-row">
+    <label for="node-input-stationCode"><i class="icon-tag"></i> Station Code</label>
+    <input type="text" id="node-input-stationCode" placeholder="Station Code">
+  </div>
+  <div class="form-row">
+    <label for="node-input-infoType"><i class="icon-tag"></i> Info Type</label>
+    <input type="text" id="node-input-infoType" placeholder="Info Type">
+  </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="station info">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/station/info.html" target="_blank">http://docs.ekispert.com/v1/api/station/info.html</a>
 </script>
