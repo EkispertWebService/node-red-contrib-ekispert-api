@@ -99,5 +99,5 @@ module.exports = function(RED) {
       });
     });
   }
-  RED.nodes.registerType("Search Multiple Range",SearchMultipleRangeNode);
+  RED.nodes.registerType("search",SearchMultipleRangeNode);
 }
