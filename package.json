@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "hmaruyama",
   "license": "Apache-2.0",
   "keywords": [ "node-red" ],
   "node-red": {
