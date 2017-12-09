@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
 RED.nodes.registerType('station',{
   category: 'function',
   color: '#a6bbcf',
@@ -26,6 +27,24 @@ RED.nodes.registerType('station',{
     return this.name||"station";
   }
 });
+
+RED.nodes.registerType('Search Multiple Range',{
+  category: 'function',
+  color: '#a6bbcf',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    limit: { value: "" },
+    gcs: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "file.png",
+  label: function() {
+    return this.name||"Search Multiple Range";
+  }
+});
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -92,5 +111,29 @@ RED.nodes.registerType('station',{
 </script>
 
 <script type="text/x-red" data-help-name="station">
+  <p>A simple node that converts the message payloads into all ekispert characters</p>
+</script>
+
+
+<script type="text/x-red" data-template-name="Search Multiple Range">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
+    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limit"><i class="icon-tag"></i> Limit</label>
+    <input type="text" id="node-input-limit" placeholder="Limit">
+  </div>
+  <div class="form-row">
+    <label for="node-input-gcs"><i class="icon-tag"></i> Gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="Gcs">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="Search Multiple Range">
   <p>A simple node that converts the message payloads into all ekispert characters</p>
 </script>

@@ -62,4 +62,42 @@ module.exports = function(RED) {
     });
   }
   RED.nodes.registerType("station",StationNode);
+
+  function SearchMultipleRangeNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.limit = config.limit;
+    this.gcs = config.gcs;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var params = {
+        key: node.accessKey,
+        limit: node.limit,
+        gcs: node.gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + "さんの番号は、" + params[key] + "です。") ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "search/multipleRange?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("Search Multiple Range",SearchMultipleRangeNode);
 }
