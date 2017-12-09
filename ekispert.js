@@ -24,9 +24,12 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var accessKey = node.accessKey || msg.accessKey;
+      var stationName = node.stationName || msg.stationName;
+
       var params = {
-        key: node.accessKey,
-        name: node.stationName,
+        key: accessKey,
+        name: stationName,
         code: node.stationCode,
         oldName: node.stationOldName,
         corporationName: node.corporationName,
