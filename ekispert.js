@@ -67,16 +67,26 @@ module.exports = function(RED) {
     RED.nodes.createNode(this,config);
 
     this.accessKey = config.accessKey;
+    this.baseList = config.baseList;
+    this.upperMinute = config.upperMinute;
+    this.upperTransferCount = config.upperTransferCount;
+    this.plane = config.plane;
+    this.shinkansen = config.shinkansen;
+    this.limitedExpress = config.limitedExpress;
     this.limit = config.limit;
-    this.gcs = config.gcs;
     var node = this;
 
     node.on('input', function(msg) {
 
       var params = {
         key: node.accessKey,
-        limit: node.limit,
-        gcs: node.gcs
+        baseList: node.baseList,
+        upperMinute: node.upperMinute,
+        upperTransferCount: node.upperTransferCount,
+        plane: node.plane,
+        shinkansen: node.shinkansen,
+        limitedExpress: node.limitedExpress,
+        limit: node.limit
       }
 
       var flatParams = "";

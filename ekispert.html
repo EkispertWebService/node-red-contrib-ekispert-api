@@ -34,8 +34,13 @@ RED.nodes.registerType('search',{
   defaults: {
     name: { value: "" },
     accessKey: { value: "", required: true },
-    limit: { value: "" },
-    gcs: { value: "" }
+    baseList: { value: "", required: true },
+    upperMinute: { value: "", required: true },
+    upperTransferCount: { value: "" },
+    plane: { value: "" },
+    shinkansen: { value: "" },
+    limitedExpress: { value: "" },
+    limit: { value: "" }
   },
   inputs:1,
   outputs:1,
@@ -125,12 +130,32 @@ RED.nodes.registerType('search',{
     <input type="text" id="node-input-accessKey" placeholder="Access Key">
   </div>
   <div class="form-row">
-    <label for="node-input-limit"><i class="icon-tag"></i> Limit</label>
-    <input type="text" id="node-input-limit" placeholder="Limit">
+    <label for="node-input-baseList"><i class="icon-tag"></i> Base List</label>
+    <input type="text" id="node-input-baseList" placeholder="Base List">
   </div>
   <div class="form-row">
-    <label for="node-input-gcs"><i class="icon-tag"></i> Gcs</label>
-    <input type="text" id="node-input-gcs" placeholder="Gcs">
+    <label for="node-input-upperMinute"><i class="icon-tag"></i> Upper Minute</label>
+    <input type="text" id="node-input-upperMinute" placeholder="Upper Minute">
+  </div>
+  <div class="form-row">
+    <label for="node-input-upperTransferCount"><i class="icon-tag"></i> Upper Transfer Count</label>
+    <input type="text" id="node-input-upperTransferCount" placeholder="Upper Transfer Count">
+  </div>
+  <div class="form-row">
+    <label for="node-input-plane"><i class="icon-tag"></i> Plane</label>
+    <input type="text" id="node-input-plane" placeholder="Plane">
+  </div>
+  <div class="form-row">
+    <label for="node-input-shinkansen"><i class="icon-tag"></i> Shinkansen</label>
+    <input type="text" id="node-input-shinkansen" placeholder="Shinkansen">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limitedExpress"><i class="icon-tag"></i> Limited Express</label>
+    <input type="text" id="node-input-limitedExpress" placeholder="Limited Express">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limit"><i class="icon-tag"></i> Limit</label>
+    <input type="text" id="node-input-limit" placeholder="Limit">
   </div>
 </script>
 
