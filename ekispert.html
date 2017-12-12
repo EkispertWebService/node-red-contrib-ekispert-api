@@ -98,63 +98,63 @@ RED.nodes.registerType('station info',{
 <script type="text/x-red" data-template-name="station">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-    <input type="text" id="node-input-name" placeholder="Name">
+    <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
-    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
-    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
   <div class="form-row">
-    <label for="node-input-stationName"><i class="icon-tag"></i> Station Name</label>
-    <input type="text" id="node-input-stationName" placeholder="Station Name">
+    <label for="node-input-stationName"><i class="icon-tag"></i>name</label>
+    <input type="text" id="node-input-stationName" placeholder="高円寺">
   </div>
   <div class="form-row">
-    <label for="node-input-stationCode"><i class="icon-tag"></i> Station Code</label>
-    <input type="text" id="node-input-stationCode" placeholder="Station Code">
+    <label for="node-input-stationCode"><i class="icon-tag"></i>code</label>
+    <input type="text" id="node-input-stationCode" placeholder="22671">
   </div>
   <div class="form-row">
-    <label for="node-input-stationOldName"><i class="icon-tag"></i> Station Old Name</label>
-    <input type="text" id="node-input-stationOldName" placeholder="Station Old Name">
+    <label for="node-input-stationOldName"><i class="icon-tag"></i> oldName</label>
+    <input type="text" id="node-input-stationOldName" placeholder="業平橋">
   </div>
   <div class="form-row">
-    <label for="node-input-corporationName"><i class="icon-tag"></i> Corporation Name</label>
-    <input type="text" id="node-input-corporationName" placeholder="Corporation Name">
+    <label for="node-input-corporationName"><i class="icon-tag"></i> corporationName</label>
+    <input type="text" id="node-input-corporationName" placeholder="ＪＲ">
   </div>
   <div class="form-row">
-    <label for="node-input-railName"><i class="icon-tag"></i> Rail Name</label>
-    <input type="text" id="node-input-railName" placeholder="Rail Name">
+    <label for="node-input-railName"><i class="icon-tag"></i> railName</label>
+    <input type="text" id="node-input-railName" placeholder="ＪＲ中央線快速">
   </div>
   <div class="form-row">
-    <label for="node-input-operationLineCode"><i class="icon-tag"></i> Operation Line Code</label>
-    <input type="text" id="node-input-operationLineCode" placeholder="Operation Line Code">
+    <label for="node-input-operationLineCode"><i class="icon-tag"></i> operationLineCode</label>
+    <input type="text" id="node-input-operationLineCode" placeholder="109">
   </div>
   <div class="form-row">
-    <label for="node-input-trafficType"><i class="icon-tag"></i> Traffic Type</label>
-    <input type="text" id="node-input-trafficType" placeholder="Traffic Type">
+    <label for="node-input-trafficType"><i class="icon-tag"></i> type</label>
+    <input type="text" id="node-input-trafficType" placeholder="train">
   </div>
   <div class="form-row">
-    <label for="node-input-prefectureCode"><i class="icon-tag"></i> Prefecture Code</label>
-    <input type="text" id="node-input-prefectureCode" placeholder="Prefecture Code">
+    <label for="node-input-prefectureCode"><i class="icon-tag"></i> prefectureCode</label>
+    <input type="text" id="node-input-prefectureCode" placeholder="13">
   </div>
   <div class="form-row">
-    <label for="node-input-offset"><i class="icon-tag"></i> Offset</label>
-    <input type="text" id="node-input-offset" placeholder="Offset">
+    <label for="node-input-offset"><i class="icon-tag"></i> offset</label>
+    <input type="text" id="node-input-offset" placeholder="1">
   </div>
   <div class="form-row">
-    <label for="node-input-limit"><i class="icon-tag"></i> Limit</label>
-    <input type="text" id="node-input-limit" placeholder="Limit">
+    <label for="node-input-limit"><i class="icon-tag"></i> limit</label>
+    <input type="text" id="node-input-limit" placeholder="100">
   </div>
   <div class="form-row">
-    <label for="node-input-direction"><i class="icon-tag"></i> Direction</label>
-    <input type="text" id="node-input-direction" placeholder="Direction">
+    <label for="node-input-direction"><i class="icon-tag"></i> direction</label>
+    <input type="text" id="node-input-direction" placeholder="up">
   </div>
   <div class="form-row">
-    <label for="node-input-corporationBind"><i class="icon-tag"></i> Corporation Bind</label>
-    <input type="text" id="node-input-corporationBind" placeholder="Corporation Bind">
+    <label for="node-input-corporationBind"><i class="icon-tag"></i> corporationBind</label>
+    <input type="text" id="node-input-corporationBind" placeholder="京王電鉄:小田急電鉄">
   </div>
   <div class="form-row">
-    <label for="node-input-gcs"><i class="icon-tag"></i> Gcs</label>
-    <input type="text" id="node-input-gcs" placeholder="Gcs">
+    <label for="node-input-gcs"><i class="icon-tag"></i> gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="tokyo">
   </div>
 </script>
 
@@ -167,39 +167,39 @@ RED.nodes.registerType('station info',{
 <script type="text/x-red" data-template-name="search range">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-    <input type="text" id="node-input-name" placeholder="Name">
+    <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
-    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
-    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
   <div class="form-row">
-    <label for="node-input-baseList"><i class="icon-tag"></i> Base List</label>
-    <input type="text" id="node-input-baseList" placeholder="Base List">
+    <label for="node-input-baseList"><i class="icon-tag"></i> baseList</label>
+    <input type="text" id="node-input-baseList" placeholder="22828:22741">
   </div>
   <div class="form-row">
-    <label for="node-input-upperMinute"><i class="icon-tag"></i> Upper Minute</label>
-    <input type="text" id="node-input-upperMinute" placeholder="Upper Minute">
+    <label for="node-input-upperMinute"><i class="icon-tag"></i> upperMinute</label>
+    <input type="text" id="node-input-upperMinute" placeholder="10:10">
   </div>
   <div class="form-row">
-    <label for="node-input-upperTransferCount"><i class="icon-tag"></i> Upper Transfer Count</label>
-    <input type="text" id="node-input-upperTransferCount" placeholder="Upper Transfer Count">
+    <label for="node-input-upperTransferCount"><i class="icon-tag"></i> upperTransferCount</label>
+    <input type="text" id="node-input-upperTransferCount" placeholder="0:0">
   </div>
   <div class="form-row">
-    <label for="node-input-plane"><i class="icon-tag"></i> Plane</label>
-    <input type="text" id="node-input-plane" placeholder="Plane">
+    <label for="node-input-plane"><i class="icon-tag"></i> plane</label>
+    <input type="text" id="node-input-plane" placeholder="true">
   </div>
   <div class="form-row">
-    <label for="node-input-shinkansen"><i class="icon-tag"></i> Shinkansen</label>
-    <input type="text" id="node-input-shinkansen" placeholder="Shinkansen">
+    <label for="node-input-shinkansen"><i class="icon-tag"></i> shinkansen</label>
+    <input type="text" id="node-input-shinkansen" placeholder="true">
   </div>
   <div class="form-row">
-    <label for="node-input-limitedExpress"><i class="icon-tag"></i> Limited Express</label>
-    <input type="text" id="node-input-limitedExpress" placeholder="Limited Express">
+    <label for="node-input-limitedExpress"><i class="icon-tag"></i> limitedExpress</label>
+    <input type="text" id="node-input-limitedExpress" placeholder="true">
   </div>
   <div class="form-row">
-    <label for="node-input-limit"><i class="icon-tag"></i> Limit</label>
-    <input type="text" id="node-input-limit" placeholder="Limit">
+    <label for="node-input-limit"><i class="icon-tag"></i> limit</label>
+    <input type="text" id="node-input-limit" placeholder="100">
   </div>
 </script>
 
@@ -212,55 +212,55 @@ RED.nodes.registerType('station info',{
 <script type="text/x-red" data-template-name="search">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-    <input type="text" id="node-input-name" placeholder="Name">
+    <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
-    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
-    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
   <div class="form-row">
-    <label for="node-input-from"><i class="icon-tag"></i> From</label>
-    <input type="text" id="node-input-from" placeholder="From">
+    <label for="node-input-from"><i class="icon-tag"></i> from</label>
+    <input type="text" id="node-input-from" placeholder="22671">
   </div>
   <div class="form-row">
-    <label for="node-input-to"><i class="icon-tag"></i> To</label>
-    <input type="text" id="node-input-to" placeholder="To">
+    <label for="node-input-to"><i class="icon-tag"></i> to</label>
+    <input type="text" id="node-input-to" placeholder="22513">
   </div>
   <div class="form-row">
-    <label for="node-input-via"><i class="icon-tag"></i> Via</label>
-    <input type="text" id="node-input-via" placeholder="Via">
+    <label for="node-input-via"><i class="icon-tag"></i> via</label>
+    <input type="text" id="node-input-via" placeholder="22741">
   </div>
   <div class="form-row">
-    <label for="node-input-date"><i class="icon-tag"></i> Date</label>
-    <input type="text" id="node-input-date" placeholder="Date">
+    <label for="node-input-date"><i class="icon-tag"></i> date</label>
+    <input type="text" id="node-input-date" placeholder="20170401">
   </div>
   <div class="form-row">
-    <label for="node-input-time"><i class="icon-tag"></i> Time</label>
-    <input type="text" id="node-input-time" placeholder="Time">
+    <label for="node-input-time"><i class="icon-tag"></i> time</label>
+    <input type="text" id="node-input-time" placeholder="1000">
   </div>
   <div class="form-row">
-    <label for="node-input-searchType"><i class="icon-tag"></i> SearchType</label>
-    <input type="text" id="node-input-searchType" placeholder="SearchType">
+    <label for="node-input-searchType"><i class="icon-tag"></i> searchType</label>
+    <input type="text" id="node-input-searchType" placeholder="plain">
   </div>
   <div class="form-row">
-    <label for="node-input-plane"><i class="icon-tag"></i> Plane</label>
-    <input type="text" id="node-input-plane" placeholder="Plane">
+    <label for="node-input-plane"><i class="icon-tag"></i> plane</label>
+    <input type="text" id="node-input-plane" placeholder="true">
   </div>
   <div class="form-row">
-    <label for="node-input-shinkansen"><i class="icon-tag"></i> Shinkansen</label>
-    <input type="text" id="node-input-shinkansen" placeholder="Shinkansen">
+    <label for="node-input-shinkansen"><i class="icon-tag"></i> shinkansen</label>
+    <input type="text" id="node-input-shinkansen" placeholder="true">
   </div>
   <div class="form-row">
-    <label for="node-input-limitedExpress"><i class="icon-tag"></i> Limited Express</label>
-    <input type="text" id="node-input-limitedExpress" placeholder="Limited Express">
+    <label for="node-input-limitedExpress"><i class="icon-tag"></i> limitedExpress</label>
+    <input type="text" id="node-input-limitedExpress" placeholder="true">
   </div>
   <div class="form-row">
-    <label for="node-input-redirect"><i class="icon-tag"></i> Redirect</label>
-    <input type="text" id="node-input-redirect" placeholder="Redirect">
+    <label for="node-input-redirect"><i class="icon-tag"></i> redirect</label>
+    <input type="text" id="node-input-redirect" placeholder="false">
   </div>
   <div class="form-row">
-    <label for="node-input-contentsMode"><i class="icon-tag"></i> ContentsMode</label>
-    <input type="text" id="node-input-contentsMode" placeholder="ContentsMode">
+    <label for="node-input-contentsMode"><i class="icon-tag"></i> contentsMode</label>
+    <input type="text" id="node-input-contentsMode" placeholder="pc">
   </div>
 </script>
 
@@ -273,19 +273,19 @@ RED.nodes.registerType('station info',{
 <script type="text/x-red" data-template-name="station info">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-    <input type="text" id="node-input-name" placeholder="Name">
+    <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
-    <label for="node-input-accessKey"><i class="icon-tag"></i> Access Key</label>
-    <input type="text" id="node-input-accessKey" placeholder="Access Key">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
   <div class="form-row">
-    <label for="node-input-stationCode"><i class="icon-tag"></i> Station Code</label>
-    <input type="text" id="node-input-stationCode" placeholder="Station Code">
+    <label for="node-input-stationCode"><i class="icon-tag"></i> code</label>
+    <input type="text" id="node-input-stationCode" placeholder="22828">
   </div>
   <div class="form-row">
-    <label for="node-input-infoType"><i class="icon-tag"></i> Info Type</label>
-    <input type="text" id="node-input-infoType" placeholder="Info Type">
+    <label for="node-input-infoType"><i class="icon-tag"></i> type</label>
+    <input type="text" id="node-input-infoType" placeholder="rail:exit">
   </div>
 
 </script>
