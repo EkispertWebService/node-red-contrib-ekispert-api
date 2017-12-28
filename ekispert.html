@@ -168,6 +168,21 @@ RED.nodes.registerType('corporation',{
   }
 });
 
+RED.nodes.registerType('dataversion',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"dataversion";
+  }
+});
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -540,4 +555,20 @@ RED.nodes.registerType('corporation',{
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/corporation.html" target="_blank">http://docs.ekispert.com/v1/api/corporation.html</a>
   <a href="http://docs.ekispert.com/v1/le/api/corporation.html" target="_blank">http://docs.ekispert.com/v1/le/api/corporation.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="dataversion">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="dataversion">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/dataversion.html" target="_blank">http://docs.ekispert.com/v1/api/dataversion.html</a>
 </script>

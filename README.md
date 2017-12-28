@@ -46,3 +46,7 @@ http://docs.ekispert.com/v1/le/api/rail.html
 
 http://docs.ekispert.com/v1/api/corporation.html
 http://docs.ekispert.com/v1/le/api/corporation.html
+
+#### dataversion
+
+http://docs.ekispert.com/v1/api/dataversion.html
