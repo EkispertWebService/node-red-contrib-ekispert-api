@@ -17,10 +17,12 @@ npm install node-red-contrib-ekispert-api
 #### station
 
 http://docs.ekispert.com/v1/api/station.html
+http://docs.ekispert.com/v1/le/api/station.html
 
 #### station info
 
 http://docs.ekispert.com/v1/api/station/info.html
+http://docs.ekispert.com/v1/le/api/station/info.html
 
 #### search
 
@@ -29,3 +31,8 @@ http://docs.ekispert.com/v1/le/api/search/course/light.html
 #### search range
 
 http://docs.ekispert.com/v1/api/search/multipleRange.html
+
+#### operation line
+
+http://docs.ekispert.com/v1/api/operationLine.html
+http://docs.ekispert.com/v1/le/api/operationLine.html
