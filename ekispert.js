@@ -448,4 +448,40 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("corporation",CorporationNode);
 
+  function DataversionNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+
+      var params = {
+        key: accessKey
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "dataversion?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("dataversion",DataversionNode);
+
 }
