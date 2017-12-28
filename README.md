@@ -36,3 +36,8 @@ http://docs.ekispert.com/v1/api/search/multipleRange.html
 
 http://docs.ekispert.com/v1/api/operationLine.html
 http://docs.ekispert.com/v1/le/api/operationLine.html
+
+#### rail
+
+http://docs.ekispert.com/v1/api/rail.html
+http://docs.ekispert.com/v1/le/api/rail.html

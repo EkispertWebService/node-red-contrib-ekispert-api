@@ -117,6 +117,34 @@ RED.nodes.registerType('operation line',{
   }
 });
 
+RED.nodes.registerType('rail',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    railName: { value: "" },
+    railOldName: { value: "" },
+    corporationCode: { value: "" },
+    corporationName: { value: "" },
+    from: { value: "" },
+    to: { value: "" },
+    prefectureCode: { value: "" },
+    date: { value: "" },
+    trafficType: { value: "" },
+    offset: { value: "" },
+    limit: { value: "" },
+    serializeData: { value: "" },
+    checkEngineVersion: { value: "" },
+    sectionIndex: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"rail";
+  }
+});
 
 </script>
 
@@ -372,4 +400,77 @@ RED.nodes.registerType('operation line',{
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/operationLine.html" target="_blank">http://docs.ekispert.com/v1/api/operationLine.html</a>
   <a href="http://docs.ekispert.com/v1/le/api/operationLine.html" target="_blank">http://docs.ekispert.com/v1/le/api/operationLine.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="rail">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-railName"><i class="icon-tag"></i>name</label>
+    <input type="text" id="node-input-railName" placeholder="ＪＲ中央線快速">
+  </div>
+  <div class="form-row">
+    <label for="node-input-railOldName"><i class="icon-tag"></i>oldName</label>
+    <input type="text" id="node-input-railOldName" placeholder="近鉄奈良線快急">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationCode"><i class="icon-tag"></i> corporationCode</label>
+    <input type="text" id="node-input-corporationCode" placeholder="1">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationName"><i class="icon-tag"></i> corporationName</label>
+    <input type="text" id="node-input-corporationName" placeholder="ＪＲ">
+  </div>
+  <div class="form-row">
+    <label for="node-input-from"><i class="icon-tag"></i> from</label>
+    <input type="text" id="node-input-from" placeholder="22828">
+  </div>
+  <div class="form-row">
+    <label for="node-input-to"><i class="icon-tag"></i> to</label>
+    <input type="text" id="node-input-to" placeholder="22671">
+  </div>
+  <div class="form-row">
+    <label for="node-input-prefectureCode"><i class="icon-tag"></i> prefectureCode</label>
+    <input type="text" id="node-input-prefectureCode" placeholder="13">
+  </div>
+  <div class="form-row">
+    <label for="node-input-date"><i class="icon-tag"></i> date</label>
+    <input type="text" id="node-input-date" placeholder="20170401">
+  </div>
+  <div class="form-row">
+    <label for="node-input-trafficType"><i class="icon-tag"></i> type</label>
+    <input type="text" id="node-input-trafficType" placeholder="train">
+  </div>
+  <div class="form-row">
+    <label for="node-input-offset"><i class="icon-tag"></i> offset</label>
+    <input type="text" id="node-input-offset" placeholder="1">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limit"><i class="icon-tag"></i> limit</label>
+    <input type="text" id="node-input-limit" placeholder="100">
+  </div>
+  <div class="form-row">
+    <label for="node-input-serializeData"><i class="icon-tag"></i> serializeData</label>
+    <input type="text" id="node-input-serializeData" placeholder="VkV4QaEByALDAqYBM|yGA6YBM|yFBJHCAUMAAAACpgEz7IUDyAEBAgEDAQQBBwEIAQoCD0JAAAWSwQKlWI_BAqVZLAaRwwEEAgEDwQGk3QeRxQGmATPJ3AOBBIEFAAgACJHEBAEFAQekbQgBCZHBAwEPkcUBkgABApHDAQACAAMAA5HDAQACAAMABJEABZEA--T3221233232319:F3321122120:A23121141:--d30504404aefd6001e59d22811d466002b5b6681--0--0--0--144">
+  </div>
+  <div class="form-row">
+    <label for="node-input-checkEngineVersion"><i class="icon-tag"></i> checkEngineVersion</label>
+    <input type="text" id="node-input-checkEngineVersion" placeholder="true">
+  </div>
+  <div class="form-row">
+    <label for="node-input-sectionIndex"><i class="icon-tag"></i> sectionIndex</label>
+    <input type="text" id="node-input-sectionIndex" placeholder="1">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="rail">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/rail.html" target="_blank">http://docs.ekispert.com/v1/api/rail.html</a>
+  <a href="http://docs.ekispert.com/v1/le/api/rail.html" target="_blank">http://docs.ekispert.com/v1/le/api/rail.html</a>
 </script>
