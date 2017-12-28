@@ -29,3 +29,8 @@ http://docs.ekispert.com/v1/le/api/search/course/light.html
 #### search range
 
 http://docs.ekispert.com/v1/api/search/multipleRange.html
+
+#### operation line
+
+http://docs.ekispert.com/v1/api/operationLine.html
+http://docs.ekispert.com/v1/le/api/operationLine.html

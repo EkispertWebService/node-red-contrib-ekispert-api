@@ -93,6 +93,31 @@ RED.nodes.registerType('station info',{
   }
 });
 
+RED.nodes.registerType('operation line',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    operationLineCode: { value: "" },
+    operationLineName: { value: "" },
+    corporationCode: { value: "" },
+    corporationName: { value: "" },
+    prefectureCode: { value: "" },
+    date: { value: "" },
+    offset: { value: "" },
+    limit: { value: "" },
+    gcs: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"operation line";
+  }
+});
+
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -293,4 +318,58 @@ RED.nodes.registerType('station info',{
 <script type="text/x-red" data-help-name="station info">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/station/info.html" target="_blank">http://docs.ekispert.com/v1/api/station/info.html</a>
+</script>
+
+
+<script type="text/x-red" data-template-name="operation line">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-operationLineCode"><i class="icon-tag"></i>code</label>
+    <input type="text" id="node-input-operationLineCode" placeholder="109">
+  </div>
+  <div class="form-row">
+    <label for="node-input-operationLineName"><i class="icon-tag"></i>name</label>
+    <input type="text" id="node-input-operationLineName" placeholder="ＪＲ中央線快速">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationCode"><i class="icon-tag"></i> corporationCode</label>
+    <input type="text" id="node-input-corporationCode" placeholder="1">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationName"><i class="icon-tag"></i> corporationName</label>
+    <input type="text" id="node-input-corporationName" placeholder="ＪＲ">
+  </div>
+  <div class="form-row">
+    <label for="node-input-prefectureCode"><i class="icon-tag"></i> prefectureCode</label>
+    <input type="text" id="node-input-prefectureCode" placeholder="13">
+  </div>
+  <div class="form-row">
+    <label for="node-input-date"><i class="icon-tag"></i> date</label>
+    <input type="text" id="node-input-date" placeholder="20170401">
+  </div>
+  <div class="form-row">
+    <label for="node-input-offset"><i class="icon-tag"></i> offset</label>
+    <input type="text" id="node-input-offset" placeholder="1">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limit"><i class="icon-tag"></i> limit</label>
+    <input type="text" id="node-input-limit" placeholder="100">
+  </div>
+  <div class="form-row">
+    <label for="node-input-gcs"><i class="icon-tag"></i> gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="tokyo">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="operation line">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/operationLine.html" target="_blank">http://docs.ekispert.com/v1/api/operationLine.html</a>
+  <a href="http://docs.ekispert.com/v1/le/api/operationLine.html" target="_blank">http://docs.ekispert.com/v1/le/api/operationLine.html</a>
 </script>

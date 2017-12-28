@@ -247,4 +247,68 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("station info",StationInfoNode);
 
+  function OperationLineNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.operationLineCode = config.operationLineCode;
+    this.operationLineName = config.operationLineName;
+    this.corporationCode = config.corporationCode;
+    this.corporationName = config.corporationName;
+    this.prefectureCode = config.prefectureCode;
+    this.date = config.date;
+    this.offset = config.offset;
+    this.limit = config.limit;
+    this.gcs = config.gcs;
+
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var operationLineCode = node.operationLineCode || msg.operationLineCode;
+      var operationLineName = node.operationLineName || msg.operationLineName;
+      var corporationCode = node.corporationCode || msg.corporationCode;
+      var corporationName = node.corporationName || msg.corporationName;
+      var prefectureCode = node.prefectureCode || msg.prefectureCode;
+      var date = node.date || msg.date;
+      var offset = node.offset || msg.offset;
+      var limit = node.limit || msg.limit;
+      var gcs = node.gcs || msg.gcs;
+
+      var params = {
+        key: accessKey,
+        code: operationLineCode,
+        name: operationLineName,
+        corporationCode: corporationCode,
+        corporationName: corporationName,
+        prefectureCode: prefectureCode,
+        date: date,
+        offset: offset,
+        limit: limit,
+        gcs: gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "operationLine?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("operation line",OperationLineNode);
+
 }
