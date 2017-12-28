@@ -146,6 +146,28 @@ RED.nodes.registerType('rail',{
   }
 });
 
+RED.nodes.registerType('corporation',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    corporationCode: { value: "" },
+    corporationName: { value: "" },
+    prefectureCode: { value: "" },
+    corporationType: { value: "" },
+    corporationOldName: { value: "" },
+    offset: { value: "" },
+    limit: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"corporation";
+  }
+});
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -473,4 +495,49 @@ RED.nodes.registerType('rail',{
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/rail.html" target="_blank">http://docs.ekispert.com/v1/api/rail.html</a>
   <a href="http://docs.ekispert.com/v1/le/api/rail.html" target="_blank">http://docs.ekispert.com/v1/le/api/rail.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="corporation">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationCode"><i class="icon-tag"></i>code</label>
+    <input type="text" id="node-input-corporationCode" placeholder="1">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationName"><i class="icon-tag"></i>name</label>
+    <input type="text" id="node-input-corporationName" placeholder="ＪＲ">
+  </div>
+  <div class="form-row">
+    <label for="node-input-prefectureCode"><i class="icon-tag"></i> prefectureCode</label>
+    <input type="text" id="node-input-prefectureCode" placeholder="13">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationType"><i class="icon-tag"></i> type</label>
+    <input type="text" id="node-input-corporationType" placeholder="train">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationOldName"><i class="icon-tag"></i>oldName</label>
+    <input type="text" id="node-input-corporationOldName">
+  </div>
+  <div class="form-row">
+    <label for="node-input-offset"><i class="icon-tag"></i> offset</label>
+    <input type="text" id="node-input-offset" placeholder="1">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limit"><i class="icon-tag"></i> limit</label>
+    <input type="text" id="node-input-limit" placeholder="100">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="corporation">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/corporation.html" target="_blank">http://docs.ekispert.com/v1/api/corporation.html</a>
+  <a href="http://docs.ekispert.com/v1/le/api/corporation.html" target="_blank">http://docs.ekispert.com/v1/le/api/corporation.html</a>
 </script>

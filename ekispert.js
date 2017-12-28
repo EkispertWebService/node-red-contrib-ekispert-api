@@ -390,4 +390,62 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("rail",RailNode);
 
+  function CorporationNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.corporationCode = config.corporationCode;
+    this.corporationName = config.corporationName;
+    this.prefectureCode = config.prefectureCode;
+    this.corporationType = config.corporationType;
+    this.corporationOldName = config.corporationOldName;
+    this.offset = config.offset;
+    this.limit = config.limit;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var corporationCode = node.corporationCode || msg.corporationCode;
+      var corporationName = node.corporationName || msg.corporationName;
+      var prefectureCode = node.prefectureCode || msg.prefectureCode;
+      var corporationType = node.corporationType || msg.corporationType;
+      var corporationOldName = node.corporationOldName || msg.corporationOldName;
+      var offset = node.offset || msg.offset;
+      var limit = node.limit || msg.limit;
+
+
+      var params = {
+        key: accessKey,
+        code: corporationCode,
+        name: corporationName,
+        prefectureCode: prefectureCode,
+        type: corporationType,
+        oldName: corporationOldName,
+        offset: offset,
+        limit: limit
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "corporation?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("corporation",CorporationNode);
+
 }
