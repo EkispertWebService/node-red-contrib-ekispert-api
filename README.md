@@ -41,3 +41,8 @@ http://docs.ekispert.com/v1/le/api/operationLine.html
 
 http://docs.ekispert.com/v1/api/rail.html
 http://docs.ekispert.com/v1/le/api/rail.html
+
+#### corporation
+
+http://docs.ekispert.com/v1/api/corporation.html
+http://docs.ekispert.com/v1/le/api/corporation.html
