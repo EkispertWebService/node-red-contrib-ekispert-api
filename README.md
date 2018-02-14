@@ -28,6 +28,10 @@ http://docs.ekispert.com/v1/le/api/station/info.html
 
 http://docs.ekispert.com/v1/api/search/course/extreme.html
 
+#### search course plain
+
+http://docs.ekispert.com/v1/api/search/course/plain.html
+
 #### search range
 
 http://docs.ekispert.com/v1/api/search/multipleRange.html

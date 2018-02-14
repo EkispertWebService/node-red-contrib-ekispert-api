@@ -587,4 +587,66 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("search course extreme",SearchCourseExtremeNode);
 
+  function SearchCoursePlainNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.from = config.from;
+    this.to = config.to;
+    this.via = config.via;
+    this.date = config.date;
+    this.plane = config.plane;
+    this.shinkansen = config.shinkansen;
+    this.limitedExpress = config.limitedExpress;
+    this.bus = config.bus;
+    this.gcs = config.gcs;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var from = node.from || msg.from;
+      var to = node.to || msg.to;
+      var via = node.via || msg.via;
+      var date = node.date || msg.date;
+      var plane = node.plane || msg.plane;
+      var shinkansen = node.shinkansen || msg.shinkansen;
+      var limitedExpress = node.limitedExpress || msg.limitedExpress;
+      var bus = node.bus || msg.bus;
+      var gcs = node.gcs || msg.gcs;
+
+      var params = {
+        key: accessKey,
+        from: from,
+        to: to,
+        via: via,
+        date: date,
+        plane: plane,
+        shinkansen: shinkansen,
+        limitedExpress: limitedExpress,
+        bus: bus,
+        gcs: gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "search/course/plain?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("search course plain",SearchCoursePlainNode);
 }
