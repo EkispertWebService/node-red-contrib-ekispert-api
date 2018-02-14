@@ -19,6 +19,10 @@ npm install node-red-contrib-ekispert-api
 http://docs.ekispert.com/v1/api/station.html
 http://docs.ekispert.com/v1/le/api/station.html
 
+#### geo station
+
+http://docs.ekispert.com/v1/api/geo/station.html
+
 #### station info
 
 http://docs.ekispert.com/v1/api/station/info.html

@@ -244,6 +244,26 @@ RED.nodes.registerType('search course plain',{
   }
 });
 
+RED.nodes.registerType('geo station',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    geoPoint: { value: "", required: true },
+    trafficType: { value: "" },
+    corporationBind: { value: "" },
+    addGateGroup: { value: "" },
+    gcs: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"geo station";
+  }
+});
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -788,4 +808,40 @@ RED.nodes.registerType('search course plain',{
 <script type="text/x-red" data-help-name="search course plain">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/search/course/plain.html" target="_blank">http://docs.ekispert.com/v1/api/search/course/plain.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="geo station">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-geoPoint"><i class="icon-tag"></i>geoPoint</label>
+    <input type="text" id="node-input-geoPoint" placeholder="35.706046,139.6492533,wgs84">
+  </div>
+  <div class="form-row">
+    <label for="node-input-trafficType"><i class="icon-tag"></i> type</label>
+    <input type="text" id="node-input-trafficType" placeholder="train">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationBind"><i class="icon-tag"></i> corporationBind</label>
+    <input type="text" id="node-input-corporationBind" placeholder="京王電鉄:小田急電鉄">
+  </div>
+  <div class="form-row">
+    <label for="node-input-addGateGroup"><i class="icon-tag"></i> addGateGroup</label>
+    <input type="text" id="node-input-addGateGroup" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-gcs"><i class="icon-tag"></i> gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="tokyo">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="geo station">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/geo/station.html" target="_blank">http://docs.ekispert.com/v1/api/geo/station.html</a>
 </script>

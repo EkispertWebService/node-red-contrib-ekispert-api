@@ -649,4 +649,56 @@ module.exports = function(RED) {
     });
   }
   RED.nodes.registerType("search course plain",SearchCoursePlainNode);
+
+  function GeoStationNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.geoPoint = config.geoPoint;
+    this.trafficType = config.trafficType;
+    this.corporationBind = config.corporationBind;
+    this.addGateGroup = config.addGateGroup;
+    this.gcs = config.gcs;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var geoPoint = node.geoPoint || msg.geoPoint;
+      var trafficType = node.trafficType || msg.trafficType;
+      var corporationBind = node.corporationBind || msg.corporationBind;
+      var addGateGroup = node.addGateGroup || msg.addGateGroup;
+      var gcs = node.gcs || msg.gcs;
+
+
+      var params = {
+        key: accessKey,
+        geoPoint: geoPoint,
+        type: trafficType,
+        corporationBind: corporationBind,
+        addGateGroup: addGateGroup,
+        gcs: gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "geo/station?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("geo station",GeoStationNode);
 }
