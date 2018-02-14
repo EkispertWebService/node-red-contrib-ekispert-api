@@ -62,3 +62,7 @@ http://docs.ekispert.com/v1/le/api/corporation.html
 #### dataversion
 
 http://docs.ekispert.com/v1/api/dataversion.html
+
+#### toolbox course condition
+
+http://docs.ekispert.com/v1/api/toolbox/course/condition.html
