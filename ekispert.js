@@ -484,4 +484,107 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("dataversion",DataversionNode);
 
+  function SearchCourseExtremeNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.viaList = config.viaList;
+    this.fixedRailList = config.fixedRailList;
+    this.fixedRailDirectionList = config.fixedRailDirectionList;
+    this.date = config.date;
+    this.time = config.time;
+    this.searchType = config.searchType;
+    this.sort = config.sort;
+    this.answerCount = config.answerCount;
+    this.searchCount = config.searchCount;
+    this.conditionDetail = config.conditionDetail;
+    this.corporationBind = config.corporationBind;
+    this.interruptCorporationList = config.interruptCorporationList;
+    this.interruptRailList = config.interruptRailList;
+    this.resultDetail = config.resultDetail;
+    this.addOperationLinePattern = config.addOperationLinePattern;
+    this.assignRoute = config.assignRoute;
+    this.assignDetailRoute = config.assignDetailRoute;
+    this.assignNikukanteikiIndex = config.assignNikukanteikiIndex;
+    this.coupon = config.coupon;
+    this.bringAssignmentError = config.bringAssignmentError;
+    this.addChange = config.addChange;
+    this.gcs = config.gcs;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var viaList = node.viaList || msg.viaList;
+      var fixedRailList = node.fixedRailList || msg.fixedRailList;
+      var fixedRailDirectionList = node.fixedRailDirectionList || msg.fixedRailDirectionList;
+      var date = node.date || msg.date;
+      var time = node.time || msg.time;
+      var searchType = node.searchType || msg.searchType;
+      var sort = node.sort || msg.sort;
+      var answerCount = node.answerCount || msg.answerCount;
+      var searchCount = node.searchCount || msg.searchCount;
+      var conditionDetail = node.conditionDetail || msg.conditionDetail;
+      var corporationBind = node.corporationBind || msg.corporationBind;
+      var interruptCorporationList = node.interruptCorporationList || msg.interruptCorporationList;
+      var interruptRailList = node.interruptRailList || msg.interruptRailList;
+      var resultDetail = node.resultDetail || msg.resultDetail;
+      var addOperationLinePattern = node.addOperationLinePattern || msg.addOperationLinePattern;
+      var assignRoute = node.assignRoute || msg.assignRoute;
+      var assignDetailRoute = node.assignDetailRoute || msg.assignDetailRoute;
+      var assignNikukanteikiIndex = node.assignNikukanteikiIndex || msg.assignNikukanteikiIndex;
+      var coupon = node.coupon || msg.coupon;
+      var bringAssignmentError = node.bringAssignmentError || msg.bringAssignmentError;
+      var addChange = node.addChange || msg.addChange;
+      var gcs = node.gcs || msg.gcs;
+
+
+      var params = {
+        key: accessKey,
+        viaList: viaList,
+        fixedRailList: fixedRailList,
+        fixedRailDirectionList: fixedRailDirectionList,
+        date: date,
+        time: time,
+        searchType: searchType,
+        sort: sort,
+        answerCount: answerCount,
+        searchCount: searchCount,
+        conditionDetail: conditionDetail,
+        corporationBind: corporationBind,
+        interruptCorporationList: interruptCorporationList,
+        interruptRailList: interruptRailList,
+        resultDetail: resultDetail,
+        addOperationLinePattern: addOperationLinePattern,
+        assignRoute: assignRoute,
+        assignDetailRoute: assignDetailRoute,
+        assignNikukanteikiIndex: assignNikukanteikiIndex,
+        coupon: coupon,
+        bringAssignmentError: bringAssignmentError,
+        addChange: addChange,
+        gcs: gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "search/course/extreme?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("search course extreme",SearchCourseExtremeNode);
+
 }
