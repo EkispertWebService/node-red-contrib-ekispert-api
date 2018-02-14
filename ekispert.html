@@ -50,7 +50,7 @@ RED.nodes.registerType('search range',{
   }
 });
 
-RED.nodes.registerType('search',{
+RED.nodes.registerType('search course light',{
   category: 'function',
   color: '#e49190',
   defaults: {
@@ -72,7 +72,7 @@ RED.nodes.registerType('search',{
   outputs:1,
   icon: "ekispert.png",
   label: function() {
-    return this.name||"search";
+    return this.name||"search course light";
   }
 });
 
@@ -380,7 +380,7 @@ RED.nodes.registerType('geo station',{
 </script>
 
 
-<script type="text/x-red" data-template-name="search">
+<script type="text/x-red" data-template-name="search course light">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
@@ -411,7 +411,7 @@ RED.nodes.registerType('geo station',{
   </div>
   <div class="form-row">
     <label for="node-input-searchType"><i class="icon-tag"></i> searchType</label>
-    <input type="text" id="node-input-searchType" placeholder="plain">
+    <input type="text" id="node-input-searchType" placeholder="departure">
   </div>
   <div class="form-row">
     <label for="node-input-plane"><i class="icon-tag"></i> plane</label>
@@ -435,7 +435,7 @@ RED.nodes.registerType('geo station',{
   </div>
 </script>
 
-<script type="text/x-red" data-help-name="search">
+<script type="text/x-red" data-help-name="search course light">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/le/api/search/course/light.html" target="_blank">http://docs.ekispert.com/v1/le/api/search/course/light.html</a>
 </script>

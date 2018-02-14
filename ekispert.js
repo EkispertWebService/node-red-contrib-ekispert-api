@@ -136,7 +136,7 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("search range",SearchMultipleRangeNode);
 
-  function SearchNode(config) {
+  function SearchCourseLightNode(config) {
     RED.nodes.createNode(this,config);
 
     this.accessKey = config.accessKey;
@@ -203,7 +203,7 @@ module.exports = function(RED) {
       });
     });
   }
-  RED.nodes.registerType("search",SearchNode);
+  RED.nodes.registerType("search course light",SearchCourseLightNode);
 
   function StationInfoNode(config) {
     RED.nodes.createNode(this,config);

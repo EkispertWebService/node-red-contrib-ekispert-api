@@ -40,7 +40,7 @@ http://docs.ekispert.com/v1/api/search/course/plain.html
 
 http://docs.ekispert.com/v1/api/search/multipleRange.html
 
-#### search
+#### search course light
 
 http://docs.ekispert.com/v1/le/api/search/course/light.html
 
