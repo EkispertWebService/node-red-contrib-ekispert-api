@@ -136,7 +136,7 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("search range",SearchMultipleRangeNode);
 
-  function SearchNode(config) {
+  function SearchCourseLightNode(config) {
     RED.nodes.createNode(this,config);
 
     this.accessKey = config.accessKey;
@@ -203,7 +203,7 @@ module.exports = function(RED) {
       });
     });
   }
-  RED.nodes.registerType("search",SearchNode);
+  RED.nodes.registerType("search course light",SearchCourseLightNode);
 
   function StationInfoNode(config) {
     RED.nodes.createNode(this,config);
@@ -484,4 +484,341 @@ module.exports = function(RED) {
   }
   RED.nodes.registerType("dataversion",DataversionNode);
 
+  function SearchCourseExtremeNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.viaList = config.viaList;
+    this.fixedRailList = config.fixedRailList;
+    this.fixedRailDirectionList = config.fixedRailDirectionList;
+    this.date = config.date;
+    this.time = config.time;
+    this.searchType = config.searchType;
+    this.sort = config.sort;
+    this.answerCount = config.answerCount;
+    this.searchCount = config.searchCount;
+    this.conditionDetail = config.conditionDetail;
+    this.corporationBind = config.corporationBind;
+    this.interruptCorporationList = config.interruptCorporationList;
+    this.interruptRailList = config.interruptRailList;
+    this.resultDetail = config.resultDetail;
+    this.addOperationLinePattern = config.addOperationLinePattern;
+    this.assignRoute = config.assignRoute;
+    this.assignDetailRoute = config.assignDetailRoute;
+    this.assignNikukanteikiIndex = config.assignNikukanteikiIndex;
+    this.coupon = config.coupon;
+    this.bringAssignmentError = config.bringAssignmentError;
+    this.addChange = config.addChange;
+    this.gcs = config.gcs;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var viaList = node.viaList || msg.viaList;
+      var fixedRailList = node.fixedRailList || msg.fixedRailList;
+      var fixedRailDirectionList = node.fixedRailDirectionList || msg.fixedRailDirectionList;
+      var date = node.date || msg.date;
+      var time = node.time || msg.time;
+      var searchType = node.searchType || msg.searchType;
+      var sort = node.sort || msg.sort;
+      var answerCount = node.answerCount || msg.answerCount;
+      var searchCount = node.searchCount || msg.searchCount;
+      var conditionDetail = node.conditionDetail || msg.conditionDetail;
+      var corporationBind = node.corporationBind || msg.corporationBind;
+      var interruptCorporationList = node.interruptCorporationList || msg.interruptCorporationList;
+      var interruptRailList = node.interruptRailList || msg.interruptRailList;
+      var resultDetail = node.resultDetail || msg.resultDetail;
+      var addOperationLinePattern = node.addOperationLinePattern || msg.addOperationLinePattern;
+      var assignRoute = node.assignRoute || msg.assignRoute;
+      var assignDetailRoute = node.assignDetailRoute || msg.assignDetailRoute;
+      var assignNikukanteikiIndex = node.assignNikukanteikiIndex || msg.assignNikukanteikiIndex;
+      var coupon = node.coupon || msg.coupon;
+      var bringAssignmentError = node.bringAssignmentError || msg.bringAssignmentError;
+      var addChange = node.addChange || msg.addChange;
+      var gcs = node.gcs || msg.gcs;
+
+
+      var params = {
+        key: accessKey,
+        viaList: viaList,
+        fixedRailList: fixedRailList,
+        fixedRailDirectionList: fixedRailDirectionList,
+        date: date,
+        time: time,
+        searchType: searchType,
+        sort: sort,
+        answerCount: answerCount,
+        searchCount: searchCount,
+        conditionDetail: conditionDetail,
+        corporationBind: corporationBind,
+        interruptCorporationList: interruptCorporationList,
+        interruptRailList: interruptRailList,
+        resultDetail: resultDetail,
+        addOperationLinePattern: addOperationLinePattern,
+        assignRoute: assignRoute,
+        assignDetailRoute: assignDetailRoute,
+        assignNikukanteikiIndex: assignNikukanteikiIndex,
+        coupon: coupon,
+        bringAssignmentError: bringAssignmentError,
+        addChange: addChange,
+        gcs: gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "search/course/extreme?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("search course extreme",SearchCourseExtremeNode);
+
+  function SearchCoursePlainNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.from = config.from;
+    this.to = config.to;
+    this.via = config.via;
+    this.date = config.date;
+    this.plane = config.plane;
+    this.shinkansen = config.shinkansen;
+    this.limitedExpress = config.limitedExpress;
+    this.bus = config.bus;
+    this.gcs = config.gcs;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var from = node.from || msg.from;
+      var to = node.to || msg.to;
+      var via = node.via || msg.via;
+      var date = node.date || msg.date;
+      var plane = node.plane || msg.plane;
+      var shinkansen = node.shinkansen || msg.shinkansen;
+      var limitedExpress = node.limitedExpress || msg.limitedExpress;
+      var bus = node.bus || msg.bus;
+      var gcs = node.gcs || msg.gcs;
+
+      var params = {
+        key: accessKey,
+        from: from,
+        to: to,
+        via: via,
+        date: date,
+        plane: plane,
+        shinkansen: shinkansen,
+        limitedExpress: limitedExpress,
+        bus: bus,
+        gcs: gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "search/course/plain?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("search course plain",SearchCoursePlainNode);
+
+  function GeoStationNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.geoPoint = config.geoPoint;
+    this.trafficType = config.trafficType;
+    this.corporationBind = config.corporationBind;
+    this.addGateGroup = config.addGateGroup;
+    this.gcs = config.gcs;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var geoPoint = node.geoPoint || msg.geoPoint;
+      var trafficType = node.trafficType || msg.trafficType;
+      var corporationBind = node.corporationBind || msg.corporationBind;
+      var addGateGroup = node.addGateGroup || msg.addGateGroup;
+      var gcs = node.gcs || msg.gcs;
+
+
+      var params = {
+        key: accessKey,
+        geoPoint: geoPoint,
+        type: trafficType,
+        corporationBind: corporationBind,
+        addGateGroup: addGateGroup,
+        gcs: gcs
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "geo/station?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("geo station",GeoStationNode);
+
+  function ToolboxCourseConditionNode(config) {
+    RED.nodes.createNode(this,config);
+
+    this.accessKey = config.accessKey;
+    this.detail = config.detail;
+    this.plane = config.plane;
+    this.shinkansen = config.shinkansen;
+    this.shinkansenNozomi = config.shinkansenNozomi;
+    this.sleeperTrain = config.sleeperTrain;
+    this.limitedExpress = config.limitedExpress;
+    this.highwayBus = config.highwayBus;
+    this.connectionBus = config.connectionBus;
+    this.localBus = config.localBus;
+    this.midnightBus = config.midnightBus;
+    this.ship = config.ship;
+    this.liner = config.liner;
+    this.walk = config.walk;
+    this.useJR = config.useJR;
+    this.transfer = config.transfer;
+    this.waitAverageTime = config.waitAverageTime;
+    this.expressStartingStation = config.expressStartingStation;
+    this.localBusOnly = config.localBusOnly;
+    this.transferTime = config.transferTime;
+    this.fuzzyLine = config.fuzzyLine;
+    this.entryPathBehavior = config.entryPathBehavior;
+    this.surchargeKind = config.surchargeKind;
+    this.teikiKind = config.teikiKind;
+    this.JRSeasonalRate = config.JRSeasonalRate;
+    this.studentDiscount = config.studentDiscount;
+    this.ticketSystemType = config.ticketSystemType;
+    this.preferredTicketOrder = config.preferredTicketOrder;
+    this.nikukanteiki = config.nikukanteiki;
+    var node = this;
+
+    node.on('input', function(msg) {
+
+      var accessKey = node.accessKey || msg.accessKey;
+      var detail = node.detail || msg.detail;
+      var plane = node.plane || msg.plane;
+      var shinkansen = node.shinkansen || msg.shinkansen;
+      var shinkansenNozomi = node.shinkansenNozomi || msg.shinkansenNozomi;
+      var sleeperTrain = node.sleeperTrain || msg.sleeperTrain;
+      var limitedExpress = node.limitedExpress || msg.limitedExpress;
+      var highwayBus = node.highwayBus || msg.highwayBus;
+      var connectionBus = node.connectionBus || msg.connectionBus;
+      var localBus = node.localBus || msg.localBus;
+      var midnightBus = node.midnightBus || msg.midnightBus;
+      var ship = node.ship || msg.ship;
+      var liner = node.liner || msg.liner;
+      var walk = node.walk || msg.walk;
+      var useJR = node.useJR || msg.useJR;
+      var transfer = node.transfer || msg.transfer;
+      var waitAverageTime = node.waitAverageTime || msg.waitAverageTime;
+      var expressStartingStation = node.expressStartingStation || msg.expressStartingStation;
+      var localBusOnly = node.localBusOnly || msg.localBusOnly;
+      var transferTime = node.transferTime || msg.transferTime;
+      var fuzzyLine = node.fuzzyLine || msg.fuzzyLine;
+      var entryPathBehavior = node.entryPathBehavior || msg.entryPathBehavior;
+      var surchargeKind = node.surchargeKind || msg.surchargeKind;
+      var teikiKind = node.teikiKind || msg.teikiKind;
+      var JRSeasonalRate = node.JRSeasonalRate || msg.JRSeasonalRate;
+      var studentDiscount = node.studentDiscount || msg.studentDiscount;
+      var ticketSystemType = node.ticketSystemType || msg.ticketSystemType;
+      var preferredTicketOrder = node.preferredTicketOrder || msg.preferredTicketOrder;
+      var nikukanteiki = node.nikukanteiki || msg.nikukanteiki;
+
+      var params = {
+        key: accessKey,
+        detail: detail,
+        plane: plane,
+        shinkansen: shinkansen,
+        shinkansenNozomi: shinkansenNozomi,
+        sleeperTrain: sleeperTrain,
+        limitedExpress: limitedExpress,
+        highwayBus: highwayBus,
+        connectionBus: connectionBus,
+        localBus: localBus,
+        midnightBus: midnightBus,
+        ship: ship,
+        liner: liner,
+        walk: walk,
+        useJR: useJR,
+        transfer: transfer,
+        waitAverageTime: waitAverageTime,
+        expressStartingStation: expressStartingStation,
+        localBusOnly: localBusOnly,
+        transferTime: transferTime,
+        fuzzyLine: fuzzyLine,
+        entryPathBehavior: entryPathBehavior,
+        surchargeKind: surchargeKind,
+        teikiKind: teikiKind,
+        JRSeasonalRate: JRSeasonalRate,
+        studentDiscount: studentDiscount,
+        ticketSystemType: ticketSystemType,
+        preferredTicketOrder: preferredTicketOrder,
+        nikukanteiki: nikukanteiki
+      }
+
+      var flatParams = "";
+      for(key in params){
+        console.log(key + ": " + params[key]) ;
+        if(params[key]) {
+          flatParams += key + "=" + params[key] + "&";
+        }
+      }
+
+      var url = encodeURI(endpoint + "toolbox/course/condition?" + flatParams);
+      console.log(url);
+      request(url, function (error, response, body) {
+        if (!error) {
+          msg.payload = JSON.parse(body);
+          node.send(msg);
+        } else {
+          node.error(error);
+        }
+      });
+    });
+  }
+  RED.nodes.registerType("toolbox course condition",ToolboxCourseConditionNode);
 }

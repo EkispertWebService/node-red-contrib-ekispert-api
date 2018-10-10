@@ -50,7 +50,7 @@ RED.nodes.registerType('search range',{
   }
 });
 
-RED.nodes.registerType('search',{
+RED.nodes.registerType('search course light',{
   category: 'function',
   color: '#e49190',
   defaults: {
@@ -72,7 +72,7 @@ RED.nodes.registerType('search',{
   outputs:1,
   icon: "ekispert.png",
   label: function() {
-    return this.name||"search";
+    return this.name||"search course light";
   }
 });
 
@@ -183,6 +183,130 @@ RED.nodes.registerType('dataversion',{
   }
 });
 
+RED.nodes.registerType('search course extreme',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    viaList: { value: "", required: true },
+    fixedRailList: { value: "" },
+    fixedRailDirectionList: { value: "" },
+    date: { value: "" },
+    time: { value: "" },
+    searchType: { value: "" },
+    sort: { value: "" },
+    answerCount: { value: "" },
+    searchCount: { value: "" },
+    conditionDetail: { value: "" },
+    corporationBind: { value: "" },
+    interruptCorporationList: { value: "" },
+    interruptRailList: { value: "" },
+    resultDetail: { value: "" },
+    addOperationLinePattern: { value: "" },
+    assignRoute: { value: "" },
+    assignDetailRoute: { value: "" },
+    assignNikukanteikiIndex: { value: "" },
+    coupon: { value: "" },
+    bringAssignmentError: { value: "" },
+    addChange: { value: "" },
+    gcs: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"search course extreme";
+  }
+});
+
+RED.nodes.registerType('search course plain',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    from: { value: "", required: true },
+    to: { value: "", required: true },
+    via: { value: "" },
+    date: { value: "" },
+    plane: { value: "" },
+    shinkansen: { value: "" },
+    limitedExpress: { value: "" },
+    bus: { value: "" },
+    gcs: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"search course plain";
+  }
+});
+
+RED.nodes.registerType('geo station',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    geoPoint: { value: "", required: true },
+    trafficType: { value: "" },
+    corporationBind: { value: "" },
+    addGateGroup: { value: "" },
+    gcs: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"geo station";
+  }
+});
+
+RED.nodes.registerType('toolbox course condition',{
+  category: 'function',
+  color: '#e49190',
+  defaults: {
+    name: { value: "" },
+    accessKey: { value: "", required: true },
+    detail: { value: "" },
+    plane: { value: "" },
+    shinkansen: { value: "" },
+    shinkansenNozomi: { value: "" },
+    sleeperTrain: { value: "" },
+    limitedExpress: { value: "" },
+    highwayBus: { value: "" },
+    connectionBus: { value: "" },
+    localBus: { value: "" },
+    midnightBus: { value: "" },
+    ship: { value: "" },
+    liner: { value: "" },
+    walk: { value: "" },
+    useJR: { value: "" },
+    transfer: { value: "" },
+    waitAverageTime: { value: "" },
+    expressStartingStation: { value: "" },
+    localBusOnly: { value: "" },
+    transferTime: { value: "" },
+    fuzzyLine: { value: "" },
+    entryPathBehavior: { value: "" },
+    surchargeKind: { value: "" },
+    teikiKind: { value: "" },
+    JRSeasonalRate: { value: "" },
+    studentDiscount: { value: "" },
+    ticketSystemType: { value: "" },
+    preferredTicketOrder: { value: "" },
+    nikukanteiki: { value: "" }
+  },
+  inputs:1,
+  outputs:1,
+  icon: "ekispert.png",
+  label: function() {
+    return this.name||"toolbox course condition";
+  }
+});
+
 </script>
 
 <script type="text/x-red" data-template-name="station">
@@ -251,6 +375,7 @@ RED.nodes.registerType('dataversion',{
 <script type="text/x-red" data-help-name="station">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/station.html" target="_blank">http://docs.ekispert.com/v1/api/station.html</a>
+  <a href="http://docs.ekispert.com/v1/le/api/station.html" target="_blank">http://docs.ekispert.com/v1/le/api/station.html</a>
 </script>
 
 
@@ -299,7 +424,7 @@ RED.nodes.registerType('dataversion',{
 </script>
 
 
-<script type="text/x-red" data-template-name="search">
+<script type="text/x-red" data-template-name="search course light">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
@@ -330,7 +455,7 @@ RED.nodes.registerType('dataversion',{
   </div>
   <div class="form-row">
     <label for="node-input-searchType"><i class="icon-tag"></i> searchType</label>
-    <input type="text" id="node-input-searchType" placeholder="plain">
+    <input type="text" id="node-input-searchType" placeholder="departure">
   </div>
   <div class="form-row">
     <label for="node-input-plane"><i class="icon-tag"></i> plane</label>
@@ -354,7 +479,7 @@ RED.nodes.registerType('dataversion',{
   </div>
 </script>
 
-<script type="text/x-red" data-help-name="search">
+<script type="text/x-red" data-help-name="search course light">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/le/api/search/course/light.html" target="_blank">http://docs.ekispert.com/v1/le/api/search/course/light.html</a>
 </script>
@@ -383,6 +508,7 @@ RED.nodes.registerType('dataversion',{
 <script type="text/x-red" data-help-name="station info">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/station/info.html" target="_blank">http://docs.ekispert.com/v1/api/station/info.html</a>
+  <a href="http://docs.ekispert.com/v1/le/api/station/info.html" target="_blank">http://docs.ekispert.com/v1/le/api/station/info.html</a>
 </script>
 
 
@@ -571,4 +697,324 @@ RED.nodes.registerType('dataversion',{
 <script type="text/x-red" data-help-name="dataversion">
   <p>Ekispert API</p>
   <a href="http://docs.ekispert.com/v1/api/dataversion.html" target="_blank">http://docs.ekispert.com/v1/api/dataversion.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="search course extreme">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-viaList"><i class="icon-tag"></i> viaList</label>
+    <input type="text" id="node-input-viaList" placeholder="22671:22741:22715">
+  </div>
+  <div class="form-row">
+    <label for="node-input-fixedRailList"><i class="icon-tag"></i> fixedRailList</label>
+    <input type="text" id="node-input-fixedRailList" placeholder="ＪＲ総武線:ＪＲ山手線内回り">
+  </div>
+  <div class="form-row">
+    <label for="node-input-fixedRailDirectionList"><i class="icon-tag"></i> fixedRailDirectionList</label>
+    <input type="text" id="node-input-fixedRailDirectionList" placeholder="up:down">
+  </div>
+  <div class="form-row">
+    <label for="node-input-date"><i class="icon-tag"></i> date</label>
+    <input type="text" id="node-input-date" placeholder="20170401">
+  </div>
+  <div class="form-row">
+    <label for="node-input-time"><i class="icon-tag"></i> time</label>
+    <input type="text" id="node-input-time" placeholder="1000">
+  </div>
+  <div class="form-row">
+    <label for="node-input-searchType"><i class="icon-tag"></i> searchType</label>
+    <input type="text" id="node-input-searchType" placeholder="plain">
+  </div>
+  <div class="form-row">
+    <label for="node-input-sort"><i class="icon-tag"></i> sort</label>
+    <input type="text" id="node-input-sort" placeholder="ekispert">
+  </div>
+  <div class="form-row">
+    <label for="node-input-answerCount"><i class="icon-tag"></i> answerCount</label>
+    <input type="text" id="node-input-answerCount" placeholder="5">
+  </div>
+  <div class="form-row">
+    <label for="node-input-searchCount"><i class="icon-tag"></i> searchCount</label>
+    <input type="text" id="node-input-searchCount" placeholder="5">
+  </div>
+  <div class="form-row">
+    <label for="node-input-conditionDetail"><i class="icon-tag"></i> conditionDetail</label>
+    <input type="text" id="node-input-conditionDetail" placeholder="T3221233232319:F3321122120:A23121141:">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationBind"><i class="icon-tag"></i> corporationBind</label>
+    <input type="text" id="node-input-corporationBind" placeholder="ＪＲ">
+  </div>
+  <div class="form-row">
+    <label for="node-input-interruptCorporationList"><i class="icon-tag"></i> interruptCorporationList</label>
+    <input type="text" id="node-input-interruptCorporationList" placeholder="小田急電鉄">
+  </div>
+  <div class="form-row">
+    <label for="node-input-interruptRailList"><i class="icon-tag"></i> interruptRailList</label>
+    <input type="text" id="node-input-interruptRailList" placeholder="ＪＲ中央線快速">
+  </div>
+  <div class="form-row">
+    <label for="node-input-resultDetail"><i class="icon-tag"></i> resultDetail</label>
+    <input type="text" id="node-input-resultDetail" placeholder="addCorporation">
+  </div>
+  <div class="form-row">
+    <label for="node-input-addOperationLinePattern"><i class="icon-tag"></i> addOperationLinePattern</label>
+    <input type="text" id="node-input-addOperationLinePattern" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-assignRoute"><i class="icon-tag"></i> assignRoute</label>
+    <input type="text" id="node-input-assignRoute" placeholder="高円寺:ＪＲ中央線快速:新宿:ＪＲ山手線外回り:池袋">
+  </div>
+  <div class="form-row">
+    <label for="node-input-assignDetailRoute"><i class="icon-tag"></i> assignDetailRoute</label>
+    <input type="text" id="node-input-assignDetailRoute" placeholder="高円寺:ＪＲ中央線快速:Up:新宿:ＪＲ山手線外回り:Down:池袋">
+  </div>
+  <div class="form-row">
+    <label for="node-input-assignNikukanteikiIndex"><i class="icon-tag"></i> assignNikukanteikiIndex</label>
+    <input type="text" id="node-input-assignNikukanteikiIndex" placeholder="1">
+  </div>
+  <div class="form-row">
+    <label for="node-input-coupon"><i class="icon-tag"></i> coupon</label>
+    <input type="text" id="node-input-coupon" placeholder="新幹線回数券(指定席):東京都区内:大阪市内">
+  </div>
+  <div class="form-row">
+    <label for="node-input-bringAssignmentError"><i class="icon-tag"></i> bringAssignmentError</label>
+    <input type="text" id="node-input-bringAssignmentError" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-addChange"><i class="icon-tag"></i> addChange</label>
+    <input type="text" id="node-input-addChange" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-gcs"><i class="icon-tag"></i> gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="tokyo">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="search course extreme">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/search/course/extreme.html" target="_blank">http://docs.ekispert.com/v1/api/search/course/extreme.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="search course plain">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-from"><i class="icon-tag"></i> from</label>
+    <input type="text" id="node-input-from" placeholder="22671">
+  </div>
+  <div class="form-row">
+    <label for="node-input-to"><i class="icon-tag"></i> to</label>
+    <input type="text" id="node-input-to" placeholder="22513">
+  </div>
+  <div class="form-row">
+    <label for="node-input-via"><i class="icon-tag"></i> via</label>
+    <input type="text" id="node-input-via" placeholder="22741">
+  </div>
+  <div class="form-row">
+    <label for="node-input-date"><i class="icon-tag"></i> date</label>
+    <input type="text" id="node-input-date" placeholder="20170401">
+  </div>
+  <div class="form-row">
+    <label for="node-input-plane"><i class="icon-tag"></i> plane</label>
+    <input type="text" id="node-input-plane" placeholder="true">
+  </div>
+  <div class="form-row">
+    <label for="node-input-shinkansen"><i class="icon-tag"></i> shinkansen</label>
+    <input type="text" id="node-input-shinkansen" placeholder="true">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limitedExpress"><i class="icon-tag"></i> limitedExpress</label>
+    <input type="text" id="node-input-limitedExpress" placeholder="true">
+  </div>
+  <div class="form-row">
+    <label for="node-input-bus"><i class="icon-tag"></i> bus</label>
+    <input type="text" id="node-input-bus" placeholder="true">
+  </div>
+  <div class="form-row">
+    <label for="node-input-gcs"><i class="icon-tag"></i> gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="tokyo">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="search course plain">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/search/course/plain.html" target="_blank">http://docs.ekispert.com/v1/api/search/course/plain.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="geo station">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-geoPoint"><i class="icon-tag"></i>geoPoint</label>
+    <input type="text" id="node-input-geoPoint" placeholder="35.706046,139.6492533,wgs84">
+  </div>
+  <div class="form-row">
+    <label for="node-input-trafficType"><i class="icon-tag"></i> type</label>
+    <input type="text" id="node-input-trafficType" placeholder="train">
+  </div>
+  <div class="form-row">
+    <label for="node-input-corporationBind"><i class="icon-tag"></i> corporationBind</label>
+    <input type="text" id="node-input-corporationBind" placeholder="京王電鉄:小田急電鉄">
+  </div>
+  <div class="form-row">
+    <label for="node-input-addGateGroup"><i class="icon-tag"></i> addGateGroup</label>
+    <input type="text" id="node-input-addGateGroup" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-gcs"><i class="icon-tag"></i> gcs</label>
+    <input type="text" id="node-input-gcs" placeholder="tokyo">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="geo station">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/geo/station.html" target="_blank">http://docs.ekispert.com/v1/api/geo/station.html</a>
+</script>
+
+<script type="text/x-red" data-template-name="toolbox course condition">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
+    <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="form-row">
+    <label for="node-input-detail"><i class="icon-tag"></i> detail</label>
+    <input type="text" id="node-input-detail" placeholder="T3221233232319:F3321122120:A23121141:">
+  </div>
+  <div class="form-row">
+    <label for="node-input-plane"><i class="icon-tag"></i> plane</label>
+    <input type="text" id="node-input-plane" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-shinkansen"><i class="icon-tag"></i> shinkansen</label>
+    <input type="text" id="node-input-shinkansen" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-shinkansenNozomi"><i class="icon-tag"></i> shinkansenNozomi</label>
+    <input type="text" id="node-input-shinkansenNozomi" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-sleeperTrain"><i class="icon-tag"></i> sleeperTrain</label>
+    <input type="text" id="node-input-sleeperTrain" placeholder="never">
+  </div>
+  <div class="form-row">
+    <label for="node-input-limitedExpress"><i class="icon-tag"></i> limitedExpress</label>
+    <input type="text" id="node-input-limitedExpress" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-highwayBus"><i class="icon-tag"></i> highwayBus</label>
+    <input type="text" id="node-input-highwayBus" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-connectionBus"><i class="icon-tag"></i> connectionBus</label>
+    <input type="text" id="node-input-connectionBus" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-localBus"><i class="icon-tag"></i> localBus</label>
+    <input type="text" id="node-input-localBus" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-midnightBus"><i class="icon-tag"></i> midnightBus</label>
+    <input type="text" id="node-input-midnightBus" placeholder="never">
+  </div>
+  <div class="form-row">
+    <label for="node-input-ship"><i class="icon-tag"></i> ship</label>
+    <input type="text" id="node-input-ship" placeholder="never">
+  </div>
+  <div class="form-row">
+    <label for="node-input-liner"><i class="icon-tag"></i> liner</label>
+    <input type="text" id="node-input-liner" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-walk"><i class="icon-tag"></i> walk</label>
+    <input type="text" id="node-input-walk" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-useJR"><i class="icon-tag"></i> useJR</label>
+    <input type="text" id="node-input-useJR" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-transfer"><i class="icon-tag"></i> transfer</label>
+    <input type="text" id="node-input-transfer" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-waitAverageTime"><i class="icon-tag"></i> waitAverageTime</label>
+    <input type="text" id="node-input-waitAverageTime" placeholder="true">
+  </div>
+  <div class="form-row">
+    <label for="node-input-expressStartingStation"><i class="icon-tag"></i> expressStartingStation</label>
+    <input type="text" id="node-input-expressStartingStation" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-localBusOnly"><i class="icon-tag"></i> localBusOnly</label>
+    <input type="text" id="node-input-localBusOnly" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-transferTime"><i class="icon-tag"></i> transferTime</label>
+    <input type="text" id="node-input-transferTime" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-fuzzyLine"><i class="icon-tag"></i> fuzzyLine</label>
+    <input type="text" id="node-input-fuzzyLine" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-entryPathBehavior"><i class="icon-tag"></i> entryPathBehavior</label>
+    <input type="text" id="node-input-entryPathBehavior" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-surchargeKind"><i class="icon-tag"></i> surchargeKind</label>
+    <input type="text" id="node-input-surchargeKind" placeholder="free">
+  </div>
+  <div class="form-row">
+    <label for="node-input-teikiKind"><i class="icon-tag"></i> teikiKind</label>
+    <input type="text" id="node-input-teikiKind" placeholder="bussiness">
+  </div>
+  <div class="form-row">
+    <label for="node-input-JRSeasonalRate"><i class="icon-tag"></i> JRSeasonalRate</label>
+    <input type="text" id="node-input-JRSeasonalRate" placeholder="true">
+  </div>
+  <div class="form-row">
+    <label for="node-input-studentDiscount"><i class="icon-tag"></i> studentDiscount</label>
+    <input type="text" id="node-input-studentDiscount" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-ticketSystemType"><i class="icon-tag"></i> ticketSystemType</label>
+    <input type="text" id="node-input-ticketSystemType" placeholder="normal">
+  </div>
+  <div class="form-row">
+    <label for="node-input-preferredTicketOrder"><i class="icon-tag"></i> preferredTicketOrder</label>
+    <input type="text" id="node-input-preferredTicketOrder" placeholder="none">
+  </div>
+  <div class="form-row">
+    <label for="node-input-nikukanteiki"><i class="icon-tag"></i> nikukanteiki</label>
+    <input type="text" id="node-input-nikukanteiki" placeholder="false">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="toolbox course condition">
+  <p>Ekispert API</p>
+  <a href="http://docs.ekispert.com/v1/api/toolbox/course/condition.html" target="_blank">http://docs.ekispert.com/v1/api/toolbox/course/condition.html</a>
 </script>
