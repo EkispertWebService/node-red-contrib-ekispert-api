@@ -210,6 +210,7 @@ RED.nodes.registerType('search course extreme',{
     coupon: { value: "" },
     bringAssignmentError: { value: "" },
     addChange: { value: "" },
+    addStop: { value: "" },
     gcs: { value: "" }
   },
   inputs:1,
@@ -791,6 +792,10 @@ RED.nodes.registerType('toolbox course condition',{
   <div class="form-row">
     <label for="node-input-addChange"><i class="icon-tag"></i> addChange</label>
     <input type="text" id="node-input-addChange" placeholder="false">
+  </div>
+  <div class="form-row">
+    <label for="node-input-addStop"><i class="icon-tag"></i> addStop</label>
+    <input type="text" id="node-input-addStop" placeholder="false">
   </div>
   <div class="form-row">
     <label for="node-input-gcs"><i class="icon-tag"></i> gcs</label>

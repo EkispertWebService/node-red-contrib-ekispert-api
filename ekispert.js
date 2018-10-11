@@ -509,6 +509,7 @@ module.exports = function(RED) {
     this.coupon = config.coupon;
     this.bringAssignmentError = config.bringAssignmentError;
     this.addChange = config.addChange;
+    this.addStop = config.addStop;
     this.gcs = config.gcs;
     var node = this;
 
@@ -536,6 +537,7 @@ module.exports = function(RED) {
       var coupon = node.coupon || msg.coupon;
       var bringAssignmentError = node.bringAssignmentError || msg.bringAssignmentError;
       var addChange = node.addChange || msg.addChange;
+      var addStop = node.addStop || msg.addStop;
       var gcs = node.gcs || msg.gcs;
 
 
@@ -562,6 +564,7 @@ module.exports = function(RED) {
         coupon: coupon,
         bringAssignmentError: bringAssignmentError,
         addChange: addChange,
+        addStop: addStop,
         gcs: gcs
       }
 
