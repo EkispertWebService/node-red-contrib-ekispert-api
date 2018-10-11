@@ -4,6 +4,7 @@ RED.nodes.registerType('station',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     stationName: { value: "" },
@@ -32,6 +33,7 @@ RED.nodes.registerType('search range',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     baseList: { value: "", required: true },
@@ -54,6 +56,7 @@ RED.nodes.registerType('search course light',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     from: { value: "", required: true },
@@ -80,6 +83,7 @@ RED.nodes.registerType('station info',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     stationCode: { value: "", required: true },
@@ -97,6 +101,7 @@ RED.nodes.registerType('operation line',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     operationLineCode: { value: "" },
@@ -121,6 +126,7 @@ RED.nodes.registerType('rail',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     railName: { value: "" },
@@ -150,6 +156,7 @@ RED.nodes.registerType('corporation',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     corporationCode: { value: "" },
@@ -172,6 +179,7 @@ RED.nodes.registerType('dataversion',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true }
   },
@@ -187,6 +195,7 @@ RED.nodes.registerType('search course extreme',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     viaList: { value: "", required: true },
@@ -225,6 +234,7 @@ RED.nodes.registerType('search course plain',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     from: { value: "", required: true },
@@ -249,6 +259,7 @@ RED.nodes.registerType('geo station',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     geoPoint: { value: "", required: true },
@@ -269,6 +280,7 @@ RED.nodes.registerType('toolbox course condition',{
   category: 'function',
   color: '#e49190',
   defaults: {
+    endpoint: { value: "api.ekispert.jp", required: true },
     name: { value: "" },
     accessKey: { value: "", required: true },
     detail: { value: "" },
@@ -314,6 +326,10 @@ RED.nodes.registerType('toolbox course condition',{
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
   </div>
   <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
@@ -386,6 +402,10 @@ RED.nodes.registerType('toolbox course condition',{
     <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
+  </div>
+  <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
     <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
@@ -429,6 +449,10 @@ RED.nodes.registerType('toolbox course condition',{
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
   </div>
   <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
@@ -492,6 +516,10 @@ RED.nodes.registerType('toolbox course condition',{
     <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
+  </div>
+  <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
     <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
@@ -517,6 +545,10 @@ RED.nodes.registerType('toolbox course condition',{
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
   </div>
   <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
@@ -570,6 +602,10 @@ RED.nodes.registerType('toolbox course condition',{
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
   </div>
   <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
@@ -645,6 +681,10 @@ RED.nodes.registerType('toolbox course condition',{
     <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
+  </div>
+  <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
     <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
@@ -690,6 +730,10 @@ RED.nodes.registerType('toolbox course condition',{
     <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
+  </div>
+  <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
     <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
@@ -704,6 +748,10 @@ RED.nodes.registerType('toolbox course condition',{
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
   </div>
   <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
@@ -814,6 +862,10 @@ RED.nodes.registerType('toolbox course condition',{
     <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
+  </div>
+  <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
     <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
@@ -866,6 +918,10 @@ RED.nodes.registerType('toolbox course condition',{
     <input type="text" id="node-input-name">
   </div>
   <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
+  </div>
+  <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>
     <input type="text" id="node-input-accessKey" placeholder="xxxxxxxxxxxxxxxx">
   </div>
@@ -900,6 +956,10 @@ RED.nodes.registerType('toolbox course condition',{
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-endpoint"><i class="icon-tag"></i> endpoint</label>
+    <input type="text" id="node-input-endpoint" placeholder="api.ekispert.jp">
   </div>
   <div class="form-row">
     <label for="node-input-accessKey"><i class="icon-tag"></i> key</label>

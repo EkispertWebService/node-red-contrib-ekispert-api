@@ -1,11 +1,12 @@
 module.exports = function(RED) {
 
   var request = require('request');
-  var endpoint = "https://api.ekispert.jp/v1/json/";
+  // var endpoint = "https://api.ekispert.jp//v1/json/";
 
   function StationNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.stationName = config.stationName;
     this.stationCode = config.stationCode;
@@ -24,6 +25,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var stationName = node.stationName || msg.stationName;
       var stationCode = node.stationCode || msg.stationCode;
@@ -65,7 +67,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "station?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/station?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -82,6 +84,7 @@ module.exports = function(RED) {
   function SearchMultipleRangeNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.baseList = config.baseList;
     this.upperMinute = config.upperMinute;
@@ -94,6 +97,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var baseList = node.baseList || msg.baseList;
       var upperMinute = node.upperMinute || msg.upperMinute;
@@ -122,7 +126,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "search/multipleRange?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/search/multipleRange?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -139,6 +143,7 @@ module.exports = function(RED) {
   function SearchCourseLightNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.from = config.from;
     this.to = config.to;
@@ -155,6 +160,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var from = node.from || msg.from;
       var to = node.to || msg.to;
@@ -191,7 +197,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "search/course/light?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/search/course/light?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -208,6 +214,7 @@ module.exports = function(RED) {
   function StationInfoNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.stationCode = config.stationCode;
     this.infoType = config.infoType;
@@ -215,6 +222,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var stationCode = node.stationCode || msg.stationCode;
       var infoType = node.infoType || msg.infoType;
@@ -233,7 +241,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "search/station/info?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/search/station/info?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -250,6 +258,7 @@ module.exports = function(RED) {
   function OperationLineNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.operationLineCode = config.operationLineCode;
     this.operationLineName = config.operationLineName;
@@ -265,6 +274,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var operationLineCode = node.operationLineCode || msg.operationLineCode;
       var operationLineName = node.operationLineName || msg.operationLineName;
@@ -297,7 +307,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "operationLine?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/operationLine?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -314,6 +324,7 @@ module.exports = function(RED) {
   function RailNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.railName = config.railName;
     this.railOldName = config.railOldName;
@@ -333,6 +344,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var railName = node.railName || msg.railName;
       var railOldName = node.railOldName || msg.railOldName;
@@ -376,7 +388,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "rail?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/rail?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -393,6 +405,7 @@ module.exports = function(RED) {
   function CorporationNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.corporationCode = config.corporationCode;
     this.corporationName = config.corporationName;
@@ -405,6 +418,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var corporationCode = node.corporationCode || msg.corporationCode;
       var corporationName = node.corporationName || msg.corporationName;
@@ -434,7 +448,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "corporation?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/corporation?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -451,11 +465,13 @@ module.exports = function(RED) {
   function DataversionNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     var node = this;
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
 
       var params = {
@@ -470,7 +486,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "dataversion?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/dataversion?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -487,6 +503,7 @@ module.exports = function(RED) {
   function SearchCourseExtremeNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.viaList = config.viaList;
     this.fixedRailList = config.fixedRailList;
@@ -515,6 +532,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var viaList = node.viaList || msg.viaList;
       var fixedRailList = node.fixedRailList || msg.fixedRailList;
@@ -576,7 +594,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "search/course/extreme?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/search/course/extreme?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -593,6 +611,7 @@ module.exports = function(RED) {
   function SearchCoursePlainNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.from = config.from;
     this.to = config.to;
@@ -607,6 +626,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var from = node.from || msg.from;
       var to = node.to || msg.to;
@@ -639,7 +659,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "search/course/plain?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/search/course/plain?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -656,6 +676,7 @@ module.exports = function(RED) {
   function GeoStationNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.geoPoint = config.geoPoint;
     this.trafficType = config.trafficType;
@@ -666,6 +687,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var geoPoint = node.geoPoint || msg.geoPoint;
       var trafficType = node.trafficType || msg.trafficType;
@@ -691,7 +713,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "geo/station?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/geo/station?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
@@ -708,6 +730,7 @@ module.exports = function(RED) {
   function ToolboxCourseConditionNode(config) {
     RED.nodes.createNode(this,config);
 
+    this.endpoint = config.endpoint;
     this.accessKey = config.accessKey;
     this.detail = config.detail;
     this.plane = config.plane;
@@ -741,6 +764,7 @@ module.exports = function(RED) {
 
     node.on('input', function(msg) {
 
+      var endpoint = node.endpoint || msg.endpoint;
       var accessKey = node.accessKey || msg.accessKey;
       var detail = node.detail || msg.detail;
       var plane = node.plane || msg.plane;
@@ -811,7 +835,7 @@ module.exports = function(RED) {
         }
       }
 
-      var url = encodeURI(endpoint + "toolbox/course/condition?" + flatParams);
+      var url = encodeURI("https://" + endpoint + "/v1/json/toolbox/course/condition?" + flatParams);
       console.log(url);
       request(url, function (error, response, body) {
         if (!error) {
